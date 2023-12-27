@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Keefer Option Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/syncInputs.js"></script>
+</head>
+
+<body style="margin: auto; padding: auto; user-select: auto; -moz-user-select: auto; -webkit-user-select: auto; -ms-user-select: auto; overflow: auto;">
+	<style>
+		    .hide-stats {
+      display: none;
+    }
+		</style>
+<div class="header" style="height: unset; height: 10vh; justify-content: center; align-items: center;">
+	<div class="piA"><!--#include virtual="option_stats.html" --></div>
+	<div class="piB" style="display: none;"><!--#include virtual="option_statsB.html" --></div>
+  <div style="text-align: center;"><img src="img/Globe_AIL_ negative.png" class="logo AIL" alt="AIL"><img src="img/Globe_NIL_ negative.png" class="logo NIL" alt="NIL"><button id="fullscreenBtn" tabindex="-1"><img id="fullscreenIcon" src="img/fullscreen.png" alt="Fullscreen"></button></div>
+</div>
+<div style="margin-top: 10vh;"><!--#include virtual="option_builder.html" --></div>
+<script src="js/colorChange.js"></script> 
+<script src="js/fullscreen.js"></script>
+	<script src="js/syncInputs.js"></script>
+<script>
+  // Select all forms that start with "optionMyForm"
+  const forms = document.querySelectorAll('form[id^="optionMyForm"]');
+
+  // Iterate over each form
+  forms.forEach((form) => {
+    // Disable autofill for each input field in the form
+    Array.from(form.elements).forEach((element) => {
+      if (element.tagName.toLowerCase() === "input") {
+        element.setAttribute("autocomplete", "off");
+      }
+    });
+  });
+</script>
+</body>
+</html>

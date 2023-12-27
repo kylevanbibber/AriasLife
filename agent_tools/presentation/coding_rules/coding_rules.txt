@@ -1,0 +1,15 @@
+Use camelCase for ids, classes and names, are separated by "-"
+Primary: ends with "A"
+Spouse: ends with "B"
+Child: ends with "C-K"
+Needs Analysis:
+	id: starts with "needs-"
+	class: starts with "needs-"
+	names: starts with "needs-"
+Option Builder:
+	Primary: ends with "A"
+	Spouse: ends with "B"
+	Child: ends with "C-K"
+	
+Needs to Option Builder
+	needOption- means that I am affecting something on the Option Builder page from the Needs Analysis

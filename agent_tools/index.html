@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Arias Life</title>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<style>
+body {
+background-repeat: no-repeat;
+background-size: 100% auto;
+background-position: center 0px;
+line-height: 1.5;
+color: #000000;
+font-family: "Calibri", sans-serif;
+}
+h1, h2, h3, h4 {
+font-weight: bold;
+}
+button {
+display: inline-block;
+padding: 10px;
+background-color: #490000;
+border: none;
+border-radius: 5px;
+color: #ffffff;
+font-size: 20px;
+font-weight: bold;
+cursor: pointer;
+margin-top: 10px;
+}
+button:hover {
+background-color: #7f4c4c;
+}
+select {
+font-size: 20px;
+padding: 2px;
+width: 100px;
+max-width: 100%;
+}
+
+/* Logo styles */
+.logo {
+display: inline-block;
+margin: 5px 0px 0px 5px;
+height: 60px;
+}
+
+/* New styles */
+.header {
+display: flex;
+align-items: center;
+margin-bottom: 0px;
+}
+
+.header img {
+height: 100px;
+margin-right: 20px;
+}
+
+.header h1 {
+font-size: 36px;
+margin: 0;
+}
+.close {
+background-color: #A47F4A;
+}
+.close:hover {
+background-color: #d3b284;
+}
+.container {
+background-color: rgba(255,255,255,0.75);
+}
+.options {
+background-color: #3f9043;
+}
+.options:hover {
+background-color: #6CA66E;
+}
+.phone {
+background-color: #000000;
+}
+.phone:hover {
+background-color: #393838;
+}
+.flash {
+animation: flash-animation 1s infinite;
+}
+
+@keyframes flash-animation {
+0% {
+opacity: 1;
+}
+50% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+.setup-button {
+font-size: 24pt;
+padding: 6px 12px;
+border-radius: 4px;
+font-weight: bold;
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 1px;
+transition: background-color 0.3s ease;
+background-color: #00558C;
+color: #fff;
+border: none;
+cursor: pointer;
+margin: 2px;
+}
+.setup-button:hover {
+background-color: #60CC72;
+}
+.setup-button:active {
+background-color: #bfb9b6;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 100% of the viewport height */
+    width: 100%; /* 100% of the viewport width */
+}
+
+.row {
+    flex: 1; /* Each row will take equal space */
+    text-align: center; /* Center text for multi-line content */
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row"><img src="img/Arias_Organization_Globe.png" alt="Arias Organization"></div>
+    <div class="row"><h2>Presentation Launcher</h2>
+<button onclick="openPres('presentation/pres_setup.html')" class="setup-button">Launch Presentation</button><br>
+DO NOT MOVE OR RESIZE THE POP UP WINDOW</div>
+    <div class="row">	<p>The presentation launcher works the best using <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer"><img src="img/chrome.jpg" alt="Google Chrome"></a></p>
+    <p>If you're not already using Chrome, you can download it <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">here</a>.</p></div>
+</div>
+
+<script>
+function openPres(presFile) {
+  var screenWidth = screen.availWidth;
+  var width = screenWidth > 3800 ? Math.round(screenWidth * 0.35) : Math.round(screenWidth * 0.7);
+  var height = Math.round(screen.availHeight * 0.7);
+  var left = screenWidth > 3800 ? Math.round((screenWidth - width) / 2.61) : 0;
+  var top = screen.availHeight - height;
+
+  // If a previously opened script is still open, do not open a new one
+  let openedWindow = null;
+  for (const window of popupWindows) {
+    if (!window.closed) {
+      openedWindow = window;
+      break;
+    }
+  }
+
+  if (openedWindow) {
+    openedWindow.location.href = presFile;
+    openedWindow.focus();
+    openedWindow.moveToTop();
+  } else {
+    var presWindow = window.open(
+      presFile,
+      '_blank',
+      'toolbar=no,scrollbars=no,resizable=yes,top=' + top + ',left=' + left + ',width=' + width + ',height=' + height + ',alwaysRaised=true'
+    );
+    popupWindows.push(presWindow);
+    presWindow.focus();
+  }
+}
+
+function openPhone(phoneFile) {
+  var screenWidth = screen.availWidth;
+  var screenHeight = screen.availHeight;
+  var width, height, left, top;
+
+  if (screenWidth > 3800) {
+    // If screen width is greater than 3800, open at 50% width and 100% height in the center
+    width = Math.round(screenWidth * 0.5);
+    height = screenHeight;
+    left = Math.round((screenWidth - width) / 2);
+    top = 0;
+  } else {
+    // Otherwise, open at 100% width and 100% height
+    width = screenWidth;
+    height = screenHeight;
+    left = 0;
+    top = 0;
+  }
+
+  // If a previously opened script is still open, do not open a new one
+  let openedWindow = null;
+  for (const window of popupWindows) {
+    if (!window.closed) {
+      openedWindow = window;
+      break;
+    }
+  }
+
+  if (openedWindow) {
+    openedWindow.location.href = phoneFile;
+    openedWindow.focus();
+    openedWindow.moveToTop();
+  } else {
+    var presWindow = window.open(
+      phoneFile,
+      '_blank',
+      'toolbar=no,scrollbars=no,resizable=yes,top=' + top + ',left=' + left + ',width=' + width + ',height=' + height + ',alwaysRaised=true'
+    );
+    popupWindows.push(presWindow);
+    presWindow.focus();
+  }
+}
+
+	
+// Global variable to store opened pop-up windows
+var popupWindows = [];
+</script>
+<script>
+  // Store the window objects of opened tabs
+  const tabs = [];
+</script>
+</body>
+</html>

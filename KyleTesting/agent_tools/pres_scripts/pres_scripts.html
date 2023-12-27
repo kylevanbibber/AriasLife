@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Script - Arias Life</title>
+<link rel="icon" href="scripticon.ico" type="image/x-icon">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="../refresh.js"></script>
+</head>
+
+<body>
+<form id="myForm">
+		  <div class="option-bar" style="position: fixed; top: 0; width: 100%;">
+  <div class="grid-container toggle-hide">
+    
+    <div class="item middle">
+      <span><input type="text" id="memberName" oninput="displayNames('memberName', 'memberOutput')" maxlength="20" style="width: 110px;" placeholder="Member Name" required></span>
+      <span class="couple"><input type="text" id="spouseName" oninput="displayNames('spouseName', 'spouseOutput')" maxlength="20" style="width: 110px;" placeholder="Spouse Name" required></span>
+      <span><input type="text" id="agentName" oninput="displayNames('agentName', 'agentOutput')" maxlength="20" style="width: 110px;" placeholder="Agent Name" required></span>
+	  <span class="script-type HARDCARD"><input type="text" id="groupName" oninput="displayNames('groupName', 'groupOutput')" maxlength="50" style="width: 110px;" placeholder="Group Name" required></span>
+      <span class="script-type HARDCARD"><input type="text" id="addAmount" oninput="displayADD('addAmount')" onkeypress="onlyNumbers(event)" maxlength="8" style="width: 65px;" placeholder="$ AD&D" required></span>
+	  <span class="script-type REFERRAL"><input type="text" id="sponsorName" oninput="displayNames('sponsorName', 'sponsorOutput')" maxlength="20" style="width: 110px;" placeholder="Sponsor Name" required></span>
+      <span class="script-type REFERRAL"><input type="text" id="sponsorGroup" oninput="displayNames('sponsorGroup', 'sponsorgroupOutput'); toggleUnion()" maxlength="50" style="width: 110px;" placeholder="Sponsor Group" required></span>
+		<input type="text" id="cityName" oninput="displayNames('cityName', 'cityOutput')" maxlength="20" style="width: 110px;" placeholder="City" required>
+    <div class="item">
+<div class="checkbox-container">
+		<input type="checkbox" id="singleCheckbox" onclick="togglesingle(); togglesinglenochildren()"><span class="cb-text">SINGLE</span></div>
+<div class="checkbox-container">
+		<input type="checkbox" id="seniorCheckbox" onclick="toggleSenior()"><span class="cb-text">SENIOR</span></div>
+<div class="checkbox-container">
+	  <input type="checkbox" id="nochildrenCheckbox" onclick="togglesingle(); togglesinglenochildren(); togglenochildren()"><span class="cb-text">NO CHILDREN</span>
+	</div>
+		</div>
+    </div>
+  </div>
+<div>
+      <div style="display: flex; width: 100%; margin: 0; justify-content: space-between;">
+		  
+<div>
+<select id="planTypeScript" class="dropdown-option">
+        <option value="recBasic">REC BASIC</option>
+        <option value="hourPower">HOUR POWER</option>
+			  </select>
+</div>
+		  <div>
+    <span class="smallfont" style="margin-left: 10px; color: white;">Lead Type: </span><span class="smallfont" id="leadType" style="font-weight: bold; color: white;"></span>
+<span style="display: none;">	  
+      <select id="myDropdown" onchange="handleSelection()" class="dropdown-option">
+  <option value="HARDCARD">HARDCARD</option>
+  <option value="WILLKIT">WILLKIT</option>
+  <option value="CHILDSAFE">CHILDSAFE</option>
+  <option value="REFERRAL">REFERRAL</option>
+<!--
+  <option value="POS">POS</option>
+-->
+			  </select>
+	</span>
+		  </div>
+<div>
+
+	<span class="smallfont" style="margin-left: 10px; color: white;">State: </span><span class="smallfont" id="stateID" style="font-weight: bold; color: white;"></span>
+</div>
+		  <div>
+      <button type="button" id="toggleButton" class="showhide" onClick="toggleVisibility('toggle-hide')">HIDE</button>
+			  </div>
+		  </div>
+          </div>
+		</div>	  
+	</form>
+<div class="script-content">
+	  <div><img src="../img/Arias_Organization_Globe.png" alt="AIL"></div>
+<span class="script-type HARDCARD">
+  <!--#include virtual="sections/hard_card_intro.html" --><br>
+  <!--#include virtual="sections/hard_card_reason_for_meeting.html" --><br>
+  <!--#include virtual="sections/hard_card_add.html" --><br>
+  <!--#include virtual="sections/csk.html" --><br>
+  <!--#include virtual="sections/aplus.html" --><br>
+  <!--#include virtual="sections/wk.html" --><br>
+</span>
+<span class="script-type WILLKIT">
+  <!--#include virtual="sections/wk_intro.html" --> <br>
+  <!--#include virtual="sections/wk_reason_for_meeting.html" --><br>
+  <!--#include virtual="sections/wk_wk.html" --><br>
+  <!--#include virtual="sections/aplus.html" --><br>
+  <!--#include virtual="sections/csk.html" --><br>
+	<span class="state AK AL AZ DC DE FL GA HI IA ID IN KY LA MO MS MT NC NE NM NV NY OH OK OR RI SC SC TN TX VT WA WI WV">
+  <!--#include virtual="sections/2k_add.html" --><br></span>
+</span>
+  <span class="script-type CHILDSAFE">
+  <!--#include virtual="sections/cs_intro.html" --> <br>
+  <!--#include virtual="sections/cs_reason_for_meeting.html" --><br>
+  <!--#include virtual="sections/csk.html" --><br>
+  <!--#include virtual="sections/aplus.html" --><br>
+  <!--#include virtual="sections/wk.html" --><br>
+	<span class="state AK AL AZ DC DE FL GA HI IA ID IN KY LA MO MS MT NC NE NM NV NY OH OK OR RI SC SC TN TX VT WA WI WV">
+  <!--#include virtual="sections/2k_add.html" --><br></span>
+	</span>
+<span class="script-type REFERRAL">
+  <!--#include virtual="sections/ref_intro.html" --><br>
+  <!--#include virtual="sections/ref_reason_for_meeting.html" --><br>
+  <span class="state AK AL AZ DC DE FL GA HI IA ID IN KY LA MO MS MT NC NE NM NV NY OH OK OR RI SC SC TN TX VT WA WI WV">
+  <!--#include virtual="sections/2k_add.html" --><br></span>
+  <!--#include virtual="sections/csk.html" --><br>
+  <!--#include virtual="sections/aplus.html" --><br>
+  <!--#include virtual="sections/wk.html" --><br>
+</span>
+  <span class="script-type POS">*POS script not created yet</span>
+  <!--#include virtual="sections/ref.html" --><br>
+  <span class="wlVsTerm">
+  <!--#include virtual="sections/life_explained.html" --><br> </span>
+  <!--#include virtual="sections/needs.html" --><br>
+  <!--#include virtual="sections/msg_globe.html" --><br>
+  <!--#include virtual="sections/list.html" --><br>
+  <!--#include virtual="sections/hour_power.html" --><br>
+  <!--#include virtual="sections/accidental_injuries.html" --><br>
+  <!--#include virtual="sections/foc.html" --><br>
+<span class="singlecouplechildren">
+<span class="STANDARD">
+  <!--#include virtual="sections/income.html" --><br>
+	</span></span>
+  <!--#include virtual="sections/accidental_death.html" --><br>
+  <!--#include virtual="sections/your_plan.html" --><br>
+  <!--#include virtual="sections/close.html" --><br>
+  <!--#include virtual="sections/app.html" --><br>
+  <!--#include virtual="sections/asking_bank.html" --><br>
+  <!--#include virtual="sections/final_remarks.html" --><br>
+  <!--#include virtual="sections/solidification.html" --><br>
+  <!--#include virtual="sections/docusign.html" --><br>
+  <!--#include virtual="sections/rolling_refs.html" --><br>
+  <!--#include virtual="sections/vibs.html" --><br>
+</div>
+    <script>
+//Check a box and run a function
+function checkboxChecker(checkboxId, functionName) {
+	var checkbox = document.getElementById(checkboxId);
+	if (!checkbox.checked) {
+	checkbox.checked = true;
+		functionName();
+	} else {
+    checkbox.checked = false;
+		functionName();
+	}
+}
+		
+function toggleClass(className) {
+  // Get all elements with the specified class name
+  var elements = document.getElementsByClassName(className);
+
+  // Iterate through the elements and toggle their visibility
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    if (element.style.display === 'none') {
+      element.style.display = 'block';
+    } else {
+      element.style.display = 'none';
+    }
+  }
+}
+		
+window.addEventListener("DOMContentLoaded", function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var selectedValue = urlParams.get("drop");
+    var selectedPlanType = urlParams.get("planType");
+    var isLicensedParam = urlParams.get("isLicensed");
+	var selectedState = urlParams.get("stateName");
+    var primaryNameParam = urlParams.get("primaryName");
+    var spouseNameParam = urlParams.get("spouseName");
+    var groupNameParam = urlParams.get("groupName");
+	var cityNameParam = urlParams.get("cityName");
+    var agentNameParam = urlParams.get("agentName");
+    var sponsorNameParam = urlParams.get("sponsorName");
+	var sponsorGroupParam = urlParams.get("sponsorGroup");
+    var addAmountParam = urlParams.get("addAmount");
+    var singleChecked = urlParams.get("single");
+    var seniorChecked = urlParams.get("senior");
+    var nochildrenChecked = urlParams.get("nochildren");
+    var wlVsTermParam = urlParams.get("wlVsTerm");
+	
+// Function to display or hide elements based on isLicensed parameter
+function toggleLicensedElements(isLicensed) {
+    var licensedElements = document.querySelectorAll('.isLicensed');
+	var nonLicensedElements = document.querySelectorAll('.notLicensed');
+    if (isLicensed === "true") {
+        licensedElements.forEach(function(element) {
+            element.style.display = '';
+        });
+		
+        nonLicensedElements.forEach(function(element) {
+            element.style.display = 'none';
+        });
+    } else {
+        licensedElements.forEach(function(element) {
+            element.style.display = 'none';
+        });
+		
+        nonLicensedElements.forEach(function(element) {
+            element.style.display = '';
+        });
+    }
+}
+
+//Show or Hide wlVsTermElements
+var wlVsTermElements = document.querySelectorAll('.wlVsTerm');
+
+// Loop through the selected wlVsTermElements
+for (var i = 0; i < wlVsTermElements.length; i++) {
+  if (wlVsTermParam === "true") {
+    // Show the wlVsTermElements
+    wlVsTermElements[i].style.display = '';
+  } else {
+    // Hide the wlVsTermElements
+    wlVsTermElements[i].style.display = 'none';
+  }
+}
+
+// Call the function with the isLicensedParam value
+toggleLicensedElements(isLicensedParam);
+
+
+    var dropdown = document.getElementById("myDropdown");
+    if (selectedValue !== null) {
+	dropdown.value = selectedValue;
+	} else {
+		dropdown.value = 'HARDCARD';
+	}
+	
+    if (selectedValue !== null) {
+	document.getElementById('leadType').textContent = selectedValue;
+	} else {
+		document.getElementById('leadType').textContent = 'HARDCARD';
+	}
+
+	
+    if (selectedState !== null) {
+	document.getElementById('stateID').textContent = selectedState;
+	} else {
+		document.getElementById('stateID').textContent = 'N/A';
+	}
+
+    var planType = document.getElementById("planTypeScript");
+    if (selectedPlanType !== null) {
+	planType.value = selectedPlanType;
+	} else {
+		planType.value = 'recBasic';
+	}
+
+    var memberName = document.getElementById("memberName");
+    memberName.value = primaryNameParam;
+    displayNames('memberName', 'memberOutput'); // Update displayed text for member name
+
+    var spouseName = document.getElementById("spouseName");
+    spouseName.value = spouseNameParam;
+    displayNames('spouseName', 'spouseOutput'); // Update displayed text for spouse name
+
+    var groupName = document.getElementById("groupName");
+    groupName.value = groupNameParam;
+    displayNames('groupName', 'groupOutput'); // Update displayed text for group name
+
+    var cityName = document.getElementById("cityName");
+    cityName.value = cityNameParam;
+    displayNames('cityName', 'cityOutput'); // Update displayed text for group name
+	
+    var agentName = document.getElementById("agentName");
+    agentName.value = agentNameParam;
+    displayNames('agentName', 'agentOutput'); // Update displayed text for agent name
+
+    var sponsorName = document.getElementById("sponsorName");
+    sponsorName.value = sponsorNameParam;
+    displayNames('sponsorName', 'sponsorOutput'); // Update displayed text for sponsor name
+
+    var sponsorGroup = document.getElementById("sponsorGroup");
+    sponsorGroup.value = sponsorGroupParam;
+    displayNames('sponsorGroup', 'sponsorgroupOutput'); // Update displayed text for sponsor group
+	toggleUnion(); // Update displayed text based on the sponsor group value
+
+    var addAmount = document.getElementById("addAmount"); // Assuming you have an element with the ID "addAmount"
+    addAmount.value = addAmountParam; // Update the value of the addAmount element
+
+    var singleCheckbox = document.getElementById("singleCheckbox");
+    singleCheckbox.checked = singleChecked === "true";
+    togglesingle(); // Update displayed text based on the single checkbox
+
+    var seniorCheckbox = document.getElementById("seniorCheckbox");
+    seniorCheckbox.checked = seniorChecked === "true";
+    toggleSenior(); // Update displayed text based on the senior checkbox
+
+    var nochildrenCheckbox = document.getElementById("nochildrenCheckbox");
+    nochildrenCheckbox.checked = nochildrenChecked === "true";
+    togglenochildren(); // Update displayed text based on the no children checkbox
+	
+    handleSelection();
+	handleStateSelection();
+	handlePlanTypeSelection();
+	displayADD('addAmount');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let planTypeSync = document.getElementById('planTypeScript');
+
+    planTypeSync.addEventListener('change', function() {
+        localStorage.setItem('planType', this.value);
+        handlePlanTypeSelection();
+    });
+
+    function syncPlanTypeSelection(newValue) {
+        if(planTypeSync.value !== newValue) {
+            planTypeSync.value = newValue;
+            handlePlanTypeSelection();
+        }
+    }
+
+    // Trigger sync on load in case the value is already set in localStorage
+    if(localStorage.getItem('planType')) {
+        syncPlanTypeSelection(localStorage.getItem('planType'));
+    }
+
+    window.addEventListener('storage', function(event) {
+        if (event.key === 'planType') {
+            syncPlanTypeSelection(event.newValue);
+        }
+    }, false);
+});
+
+function handleSelection() {
+  var dropdown = document.getElementById("myDropdown");
+  var selectedValue = dropdown.value;
+
+  var spans = document.getElementsByClassName("script-type");
+
+  for (var i = 0; i < spans.length; i++) {
+    spans[i].style.display = "none";
+  }
+
+  var selectedSpans = document.getElementsByClassName(selectedValue);
+
+  for (var j = 0; j < selectedSpans.length; j++) {
+    selectedSpans[j].style.display = "inline";
+  }
+}
+
+function handleStateSelection() {
+  var selectedValue = document.getElementById('stateID').textContent;
+
+  var spans = document.getElementsByClassName("state");
+
+  for (var i = 0; i < spans.length; i++) {
+    spans[i].style.display = "none";
+  }
+
+  var selectedSpans = document.getElementsByClassName(selectedValue);
+
+  for (var j = 0; j < selectedSpans.length; j++) {
+    selectedSpans[j].style.display = "inline";
+  }
+}
+		
+function handlePlanTypeSelection() {
+  var planType = document.getElementById("planTypeScript");
+  var selectedPlanType = planType.value;
+
+  var spans = document.getElementsByClassName("planType");
+
+  for (var i = 0; i < spans.length; i++) {
+    spans[i].style.display = "none";
+  }
+
+  var selectedSpans = document.getElementsByClassName(selectedPlanType);
+
+  for (var j = 0; j < selectedSpans.length; j++) {
+    selectedSpans[j].style.display = "inline";
+  }
+}
+		
+function togglesingle() {
+  var singleCheckbox = document.getElementById("singleCheckbox");
+  var singleSpans = document.getElementsByClassName("single");
+  var coupleSpans = document.getElementsByClassName("couple");
+
+  if (singleCheckbox.checked) {
+    // Show single spans and hide couple spans
+    for (var i = 0; i < singleSpans.length; i++) {
+      singleSpans[i].style.display = "inline";
+    }
+    for (var j = 0; j < coupleSpans.length; j++) {
+      coupleSpans[j].style.display = "none";
+    }
+  } else {
+    // Show couple spans and hide single spans
+    for (var k = 0; k < singleSpans.length; k++) {
+      singleSpans[k].style.display = "none";
+    }
+    for (var l = 0; l < coupleSpans.length; l++) {
+      coupleSpans[l].style.display = "inline";
+    }
+  }
+}
+		
+function toggleSenior() {
+  var seniorCheckbox = document.getElementById("seniorCheckbox");
+  var seniorSpans = document.getElementsByClassName("SENIOR");
+  var standardSpans = document.getElementsByClassName("STANDARD");
+
+  if (seniorCheckbox.checked) {
+    // Show SENIOR spans and hide STANDARD spans
+    for (var i = 0; i < seniorSpans.length; i++) {
+      seniorSpans[i].style.display = "inline";
+    }
+    for (var j = 0; j < standardSpans.length; j++) {
+      standardSpans[j].style.display = "none";
+    }
+
+  } else {
+    // Show STANDARD spans and hide SENIOR spans
+    for (var k = 0; k < seniorSpans.length; k++) {
+      seniorSpans[k].style.display = "none";
+    }
+    for (var l = 0; l < standardSpans.length; l++) {
+      standardSpans[l].style.display = "inline";
+    }
+  }
+}
+		
+function togglenochildren() {
+  var nochildrenCheckbox = document.getElementById("nochildrenCheckbox");
+  var nochildrenSpans = document.getElementsByClassName("nochildren");
+  var childrenSpans = document.getElementsByClassName("children");
+
+  if (nochildrenCheckbox.checked) {
+    // Show nochildren spans and hide children spans
+    for (var i = 0; i < nochildrenSpans.length; i++) {
+      nochildrenSpans[i].style.display = "inline";
+    }
+    for (var j = 0; j < childrenSpans.length; j++) {
+      childrenSpans[j].style.display = "none";
+    }
+  } else {
+    // Show children spans and hide nochildren spans
+    for (var k = 0; k < nochildrenSpans.length; k++) {
+      nochildrenSpans[k].style.display = "none";
+    }
+    for (var l = 0; l < childrenSpans.length; l++) {
+      childrenSpans[l].style.display = "inline";
+    }
+  }
+}
+
+		
+function togglesinglenochildren() {
+  var singleCheckbox = document.getElementById("singleCheckbox");
+  var nochildrenCheckbox = document.getElementById("nochildrenCheckbox");
+  var singlenochildrenSpans = document.getElementsByClassName("singlenochildren");
+  var singlecouplechildrenSpans = document.getElementsByClassName("singlecouplechildren");
+
+  if (singleCheckbox.checked && nochildrenCheckbox.checked) {
+    // Show single nochildren spans and hide single children spans
+    for (var i = 0; i < singlenochildrenSpans.length; i++) {
+      singlenochildrenSpans[i].style.display = "inline";
+    }
+    for (var j = 0; j < singlecouplechildrenSpans.length; j++) {
+      singlecouplechildrenSpans[j].style.display = "none";
+    }
+  } else {
+    // Show single children spans and hide single nochildren spans
+    for (var k = 0; k < singlenochildrenSpans.length; k++) {
+      singlenochildrenSpans[k].style.display = "none";
+    }
+    for (var l = 0; l < singlecouplechildrenSpans.length; l++) {
+      singlecouplechildrenSpans[l].style.display = "inline";
+    }
+  }
+}
+		
+function toggleUnion() {
+  var sponsorGroup = document.getElementById("sponsorGroup");
+  var nonunionSpans = document.getElementsByClassName("nonunion");
+  var unionSpans = document.getElementsByClassName("union");
+
+  if (sponsorGroup.value !== "") {
+    // Show union spans and hide nonunion spans
+    for (var i = 0; i < unionSpans.length; i++) {
+      unionSpans[i].style.display = "inline";
+    }
+    for (var j = 0; j < nonunionSpans.length; j++) {
+      nonunionSpans[j].style.display = "none";
+    }
+  } else {
+    // Show nonunion spans and hide union spans
+    for (var k = 0; k < unionSpans.length; k++) {
+      unionSpans[k].style.display = "none";
+    }
+    for (var l = 0; l < nonunionSpans.length; l++) {
+      nonunionSpans[l].style.display = "inline";
+    }
+  }
+}
+
+function displayADD(inputId) {
+  const inputADD = document.getElementById(inputId);
+  const outputADDElements = document.getElementsByClassName('output addOutput');
+  const inputADDValue = parseFloat(inputADD.value);
+
+  for (let i = 0; i < outputADDElements.length; i++) {
+    const outputADDElement = outputADDElements[i];
+    const showADDHalf = outputADDElement.getAttribute('data-show-half') === 'true';
+
+    if (!isNaN(inputADDValue)) {
+      const displayADDValue = showADDHalf ? (inputADDValue / 2).toFixed(0) : inputADDValue.toFixed(0);
+      const formattedValue = formatNumber(displayADDValue);
+      outputADDElement.textContent = formattedValue;
+    } else {
+      outputADDElement.textContent = showADDHalf ? '$1,500' : '$3,000';
+    }
+  }
+}
+
+function formatNumber(number) {
+  return '$' + number.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+    function onlyNumbers(event) {
+      const charCode = event.which ? event.which : event.keyCode;
+      if (charCode !== 46 && charCode > 31 && (charCode < 48 || charCode > 57)) {
+        event.preventDefault();
+      }
+    }
+		
+function displayNames(inputId, outputClass) {
+  var inputField = document.getElementById(inputId);
+  var outputElements = document.getElementsByClassName(outputClass);
+  var inputValue = inputField.value.trim();
+
+  // Clear the output
+  for (var i = 0; i < outputElements.length; i++) {
+    outputElements[i].innerHTML = "";
+  }
+
+  // Display default value if input is empty
+  if (inputValue === "") {
+    for (var i = 0; i < outputElements.length; i++) {
+      outputElements[i].textContent = getDefaultName(outputClass);
+    }
+
+    // Show surpriseSpouse elements
+    if (outputClass === "spouseOutput") {
+      var surpriseSpouseElements = document.getElementsByClassName("surpriseSpouse");
+      for (var j = 0; j < surpriseSpouseElements.length; j++) {
+        surpriseSpouseElements[j].style.display = "inline";
+      }
+    }
+  } else {
+    for (var i = 0; i < outputElements.length; i++) {
+      var span = document.createElement("span");
+      span.textContent = inputValue;
+      outputElements[i].appendChild(span);
+    }
+    
+    // Hide surpriseSpouse elements
+    if (outputClass === "spouseOutput") {
+      var surpriseSpouseElements = document.getElementsByClassName("surpriseSpouse");
+      for (var j = 0; j < surpriseSpouseElements.length; j++) {
+        surpriseSpouseElements[j].style.display = "none";
+      }
+    }
+  }
+}
+
+
+function getDefaultName(outputClass) {
+  switch (outputClass) {
+    case "memberOutput":
+      return "MEMBER";
+    case "spouseOutput":
+      return "SPOUSE";
+    case "agentOutput":
+      return "AGENT";
+    case "sponsorOutput":
+      return "SPONSOR";
+    case "sponsorgroupOutput":
+      return "GROUP";
+    case "groupOutput":
+      return "GROUP";
+    case "cityOutput":
+      return "CITY";
+    default:
+      return "";
+  }
+}
+
+// Initial display when the page loads
+displayNames('memberName', 'memberOutput');
+displayNames('spouseName', 'spouseOutput');
+displayNames('agentName', 'agentOutput');
+displayNames('sponsorName', 'sponsorOutput');
+displayNames('sponsorGroup', 'sponsorgroupOutput');
+displayNames('groupName', 'groupOutput');
+displayNames('cityName', 'cityOutput');
+		
+function toggleElements(target, button) {
+    var elements = document.querySelectorAll(target);
+
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.toggle('hidden');
+    }
+
+    // Check if button is defined; if not, find the button element within the target
+    if (!button) {
+        var parentElement = elements[0].closest('.showhide-container'); // Use an appropriate container class here
+        button = parentElement.querySelector('.showhide');
+    }
+
+    // Toggle the text content of the button
+    if (button.textContent === 'SHOW') {
+        button.textContent = 'HIDE';
+    } else {
+        button.textContent = 'SHOW';
+    }
+}
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    var thinkElement = document.querySelector('.think');
+    var affordElement = document.querySelector('.afford');
+    var needElement = document.querySelector('.noneed');
+	var universalElement = document.querySelector('.universal');
+
+    thinkElement.classList.add('hidden');
+    affordElement.classList.add('hidden');
+    needElement.classList.add('hidden');
+	universalElement.classList.add('hidden');
+});
+const myForm = document.getElementById("myForm"); // Replace "myForm" with the actual ID of your form
+
+// Disable autofill for each input field in the form
+Array.from(myForm.elements).forEach((element) => {
+  if (element.tagName.toLowerCase() === "input") {
+    element.setAttribute("autocomplete", "off");
+  }
+});
+
+// Retrieve the input element
+const agentNameInput = document.getElementById('agentName');
+
+// Load the saved value from local storage when the page loads
+window.addEventListener('load', () => {
+  const savedAgentName = localStorage.getItem('savedAgentName');
+  if (savedAgentName) {
+    agentNameInput.value = savedAgentName;
+	  displayNames('agentName', 'agentOutput');
+  }
+});
+
+// Save the value to local storage when the input field loses focus (onblur)
+agentNameInput.addEventListener('blur', () => {
+  const newAgentName = agentNameInput.value;
+  localStorage.setItem('savedAgentName', newAgentName);
+});		
+
+function toggleVisibility(className) {
+  const elements = document.getElementsByClassName(className);
+  const button = document.getElementById('toggleButton');
+  
+  for (let i = 0; i < elements.length; i++) {
+    if (elements[i].style.display === 'none') {
+      elements[i].style.display = '';
+      button.textContent = 'HIDE';
+      document.querySelector('.script-content').style.paddingTop = '';
+    } else {
+      elements[i].style.display = 'none';
+      button.textContent = 'SHOW';
+      document.querySelector('.script-content').style.paddingTop = '20px';
+    }
+  }
+}
+	
+function showVisibility(className) {
+  const elements = document.getElementsByClassName(className);
+  const button = document.getElementById('toggleButton');
+
+  for (let i = 0; i < elements.length; i++) {
+	  if (window.scrollY === 0) {
+      elements[i].style.display = 'flex';
+      button.textContent = 'HIDE';
+      document.querySelector('.script-content').style.paddingTop = '';
+  } else if (window.scrollY >= 50 && window.scrollY <= 100) {
+	  elements[i].style.display = 'none';
+      button.textContent = 'SHOW';
+      document.querySelector('.script-content').style.paddingTop = '20px';
+  }
+}
+}
+
+// Add an event listener to the window object to listen for scroll events
+window.addEventListener("scroll", () => {
+	
+    showVisibility('toggle-hide');
+});
+    </script>
+</body>
+</html>

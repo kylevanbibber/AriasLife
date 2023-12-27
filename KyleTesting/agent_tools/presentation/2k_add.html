@@ -1,0 +1,25 @@
+<!doctype html>
+<style>
+	#pdf-iframe {
+    width: 100%;     /* 100% of the viewport width */
+    height: 87vh;     /* 90% of the viewport height */
+}
+
+/* Ensure the PDF is fit to the width of the iframe */
+#pdf-iframe::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+}
+</style>
+<center>
+<iframe class="AIL" id="pdf-iframe" src="../common_documents/2k-ADD.pdf#view=Fit" frameborder="0"></iframe>
+	
+<iframe class="NIL" id="pdf-iframe" src="../common_documents/2k-ADD-NIL.pdf#view=Fit" frameborder="0"></iframe>
+</center>

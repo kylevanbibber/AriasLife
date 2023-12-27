@@ -1,0 +1,374 @@
+<!doctype html>
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/option-builder-style.css" type="text/css">
+<script src="js/optionBuilderFormat.js"></script>
+<div class="full-window-div no-slide">
+<div class="button-goto-grid no-slide" id="option-builder-slide">
+  <div class="grid-center">
+	  <span id="resetPlansText" onClick="optionResetButton()">RESET PLANS</span>
+    <button type="button" id="twoHourButton" onClick="planStyle('Two'); showHide('two-hour-block', 'one-hour-block', 'block'); showHide('two-hour-inline', 'one-hour-inline', 'inline')">TWO HOURS</button>
+    <button type="button" id="oneHourButton" onClick="planStyle('One'); showHide('one-hour-block', 'two-hour-block', 'block'); showHide('one-hour-inline', 'two-hour-inline', 'inline')">ONE HOUR</button>
+  </div>
+  <div class="grid-center"> <span id="hourTitle"></span> </div>
+  <div style="display: flex; height: 35px; justify-content: center; align-items: center; margin-top: 5px;" onclick="togglePremiumDisplay()" class="premium-div"> <span id="premiumDisplay"> <span id="totalPremiumTwoWeekly" class="premium-weekly two-hour-inline"></span><span id="totalPremiumOneWeekly" class="premium-weekly one-hour-inline"></span>/week <span style="margin: 0 20px;">or</span><span id="totalPremiumTwo" class="premium-monthly two-hour-inline"></span><span id="totalPremiumOne" class="premium-monthly one-hour-inline"></span>/month </span> <span id="showText">SHOW</span> </div>
+</div>
+<div class="option-bigboy-container piA no-slide" id="piA">
+  <form id="optionMyFormA">
+    <div class="big-grid-pi-container">
+      <div class="big-grid-pi"></div>
+      <div class="big-grid-pi"><span class="pi-title"><span id="primaryNameDisplay" class="primary-name-display"></span></span></div>
+      <div class="big-grid-pi pi-title spouse"><span id="spouseNameDisplay" class="spouse-name-display"></span></div>
+      <div class="big-grid-pi pi-title child"><span class="childRiderElement"><span class="seniorHideAB">CHILD</span></span></div>
+    </div>
+    <span class="a71Display"> <span class="two-hour-block">
+    <div class="big-grid-container" style="margin-bottom: 25px;">
+      <div class="big-grid-item"><span class="product-title a71Display">ACCIDENTAL BENEFITS</span></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('erTwo'); highlightElement('erTwo_spouse'); highlightElement('erTwo_child')" onmouseout="removeHighlight('erTwo'); removeHighlight('erTwo_spouse'); removeHighlight('erTwo_child')">Emergency Room Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="erTwo" onmouseover="highlightElement('erTwo')" onmouseout="removeHighlight('erTwo')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="erTwo_spouse" onmouseover="highlightElement('erTwo_spouse')" onmouseout="removeHighlight('erTwo_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="erTwo_child" onmouseover="highlightElement('erTwo_child')" onmouseout="removeHighlight('erTwo_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('hosTwo'); highlightElement('hosTwo_spouse'); highlightElement('hosTwo_child')" onmouseout="removeHighlight('hosTwo'); removeHighlight('hosTwo_spouse'); removeHighlight('hosTwo_child')">Daily Hospital Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="hosTwo" onmouseover="highlightElement('hosTwo')" onmouseout="removeHighlight('hosTwo')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="hosTwo_spouse" onmouseover="highlightElement('hosTwo_spouse')" onmouseout="removeHighlight('hosTwo_spouse')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="hosTwo_child" onmouseover="highlightElement('hosTwo_child')" onmouseout="removeHighlight('hosTwo_child')" style="font-weight: 200;"></span> </div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('icTwo'); highlightElement('icTwo_spouse'); highlightElement('icTwo_child')" onmouseout="removeHighlight('icTwo'); removeHighlight('icTwo_spouse'); removeHighlight('icTwo_child')">Intensive Care Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="icTwo" onmouseover="highlightElement('icTwo')" onmouseout="removeHighlight('icTwo')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="icTwo_spouse" onmouseover="highlightElement('icTwo_spouse')" onmouseout="removeHighlight('icTwo_spouse')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="icTwo_child" onmouseover="highlightElement('icTwo_child')" onmouseout="removeHighlight('icTwo_child')" style="font-weight: 200;"></span> </div>
+    </div>
+    </span> <span class="one-hour-block">
+    <div class="big-grid-container" style="margin-bottom: 25px;">
+      <div class="big-grid-item"><span class="product-title a71Display">ACCIDENTAL BENEFITS</span></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('erOne'); highlightElement('erOne_spouse'); highlightElement('erOne_child')" onmouseout="removeHighlight('erOne'); removeHighlight('erOne_spouse'); removeHighlight('erOne_child')">Emergency Room Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="erOne" onmouseover="highlightElement('erOne')" onmouseout="removeHighlight('erOne')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="erOne_spouse" onmouseover="highlightElement('erOne_spouse')" onmouseout="removeHighlight('erOne_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="erOne_child" onmouseover="highlightElement('erOne_child')" onmouseout="removeHighlight('erOne_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('hosOne'); highlightElement('hosOne_spouse'); highlightElement('hosOne_child')" onmouseout="removeHighlight('hosOne'); removeHighlight('hosOne_spouse'); removeHighlight('hosOne_child')">Daily Hospital Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="hosOne" onmouseover="highlightElement('hosOne')" onmouseout="removeHighlight('hosOne')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="hosOne_spouse" onmouseover="highlightElement('hosOne_spouse')" onmouseout="removeHighlight('hosOne_spouse')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="hosOne_child" onmouseover="highlightElement('hosOne_child')" onmouseout="removeHighlight('hosOne_child')" style="font-weight: 200;"></span> </div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('icOne'); highlightElement('icOne_spouse'); highlightElement('icOne_child')" onmouseout="removeHighlight('icOne'); removeHighlight('icOne_spouse'); removeHighlight('icOne_child')">Intensive Care Benefit</div>
+      <div class="big-grid-item"><span class="text-face" id="icOne" onmouseover="highlightElement('icOne')" onmouseout="removeHighlight('icOne')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="icOne_spouse" onmouseover="highlightElement('icOne_spouse')" onmouseout="removeHighlight('icOne_spouse')"></span> </div>
+      <div class="big-grid-item"><span class="text-face" id="icOne_child" onmouseover="highlightElement('icOne_child')" onmouseout="removeHighlight('icOne_child')" style="font-weight: 200;"></span> </div>
+    </div>
+    </span> </span>
+    <div class="big-grid-container">
+      <div class="big-grid-item"><span id="openOverlay" class="product-title foc-hover">FREEDOM OF CHOICE</span></div>
+      <div class="grid-center-bottom"> <span class="two-hour-block"> <span onClick="match('wlInputTwoA', 'wlInputTwoB')" class="button-edit">MATCH <span class="spouse-name-display"></span> </span></span> <span class="one-hour-block"> <span onClick="match('wlInputOneA', 'wlInputOneB')" class="button-edit">MATCH <span class="spouse-name-display"></span> </span></span> </div>
+      <div class="grid-center-bottom"> <span class="two-hour-block"> <span onClick="match('wlInputTwoB', 'wlInputTwoA')" class="button-edit">MATCH <span class="primary-name-display"></span> </span></span> <span class="one-hour-block"> <span onClick="match('wlInputOneB', 'wlInputOneA')" class="button-edit">MATCH <span class="primary-name-display"></span> </span></span> </div>
+      <div class="grid-center-bottom"> <span class="two-hour-block"><span class="childRiderElement"><span onClick="addChildRider('childRiderInputTwo')" class="button-edit seniorHideAB">ADD RIDER</span></span> </span> <span class="one-hour-block"><span class="childRiderElement"><span onClick="addChildRider('childRiderInputOne')" class="button-edit seniorHideAB">ADD RIDER</span></span> </span> </div>
+      <div class="big-grid-item"><span class="product-sub-title">Any Cause of Death</span><span class="product-sub-sub-title">Whole Life</span></div>
+      <div class="big-grid-item"> 
+<span class="two-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('wlInputTwoA')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('wlInputTwoA')" class="button-edit"> </div>
+          <input type="text" id="wlInputTwoA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'A')" maxlength="10" placeholder="WHOLE LIFE" onmouseover="highlightElement('wlInputTwoA')" onmouseout="removeHighlight('wlInputTwoA')">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('wlInputTwoA')" class="button-edit"> </div>
+        </div>
+</span>
+<span class="one-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('wlInputOneA')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('wlInputOneA')" class="button-edit"> </div>
+          <input type="text" id="wlInputOneA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'A')" maxlength="10" placeholder="WHOLE LIFE" onmouseover="highlightElement('wlInputOneA')" onmouseout="removeHighlight('wlInputOneA')">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('wlInputOneA')" class="button-edit"> </div>
+        </div>
+</span>
+		</div>
+      <div class="big-grid-item"> <span class="two-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('wlInputTwoB')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('wlInputTwoB')" class="button-edit"> </div>
+          <input type="text" id="wlInputTwoB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'B')" maxlength="10" placeholder="WHOLE LIFE">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('wlInputTwoB')" class="button-edit"> </div>
+        </div>
+        </span> <span class="one-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('wlInputOneB')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('wlInputOneB')" class="button-edit"> </div>
+          <input type="text" id="wlInputOneB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'B')" maxlength="10" placeholder="WHOLE LIFE">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('wlInputOneB')" class="button-edit"> </div>
+        </div>
+        </span> </div>
+      <div class="big-grid-item"> <span class="two-hour-block">
+        <div class="input-container seniorHideAB"> 
+          <div class="button-edit-container"> </div>
+          <input type="text" id="childRiderInputTwo" class="option-face childRiderElement" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculateChildRider('Two'); premium()" maxlength="7" placeholder="CHILD RIDER" style="font-weight: 200;">
+          <div class="button-edit-remove-container"> <span class="childRiderElement"><img src="img/remove.png" alt="REMOVE" onClick="remove('childRiderInputTwo')" class="button-edit"></span> </div>
+			</div>
+          </span> <span class="one-hour-block">
+		  <div class="input-container seniorHideAB"> 
+          <div class="button-edit-container"> </div>
+          <input type="text" id="childRiderInputOne" class="option-face childRiderElement" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculateChildRider('One'); premium()" maxlength="10" placeholder="CHILD RIDER" style="font-weight: 200;">
+          <div class="button-edit-remove-container"> <span class="childRiderElement"><img src="img/remove.png" alt="REMOVE" onClick="remove('childRiderInputOne')" class="button-edit"></span> </div>
+			  </div>
+          </span>
+      </div>
+    </div>
+    <span class="a71Display"> <span class="two-hour-block">
+    <div class="big-grid-container">
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('adbTwo'); highlightElement('adbTwo_spouse'); highlightElement('adbTwo_child')" onmouseout="removeHighlight('adbTwo'); removeHighlight('adbTwo_spouse'); removeHighlight('adbTwo_child')">Accidental Death</div>
+      <div class="big-grid-item"><span class="text-face" id="adbTwo" onmouseover="highlightElement('adbTwo')" onmouseout="removeHighlight('adbTwo')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="adbTwo_spouse" onmouseover="highlightElement('adbTwo_spouse')" onmouseout="removeHighlight('adbTwo_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="adbTwo_child" onmouseover="highlightElement('adbTwo_child')" onmouseout="removeHighlight('adbTwo_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('autoTwo'); highlightElement('autoTwo_spouse'); highlightElement('autoTwo_child')" onmouseout="removeHighlight('autoTwo'); removeHighlight('autoTwo_spouse'); removeHighlight('autoTwo_child')">Auto Accident</div>
+      <div class="big-grid-item"><span class="text-face" id="autoTwo" onmouseover="highlightElement('autoTwo')" onmouseout="removeHighlight('autoTwo')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="autoTwo_spouse" onmouseover="highlightElement('autoTwo_spouse')" onmouseout="removeHighlight('autoTwo_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="autoTwo_child" onmouseover="highlightElement('autoTwo_child')" onmouseout="removeHighlight('autoTwo_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('ccTwo'); highlightElement('ccTwo_spouse'); highlightElement('ccTwo_child')" onmouseout="removeHighlight('ccTwo'); removeHighlight('ccTwo_spouse'); removeHighlight('ccTwo_child')">Common Carrier</div>
+      <div class="big-grid-item"><span class="text-face" id="ccTwo" onmouseover="highlightElement('ccTwo')" onmouseout="removeHighlight('ccTwo')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="ccTwo_spouse" onmouseover="highlightElement('ccTwo_spouse')" onmouseout="removeHighlight('ccTwo_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="ccTwo_child" onmouseover="highlightElement('ccTwo_child')" onmouseout="removeHighlight('ccTwo_child')" style="font-weight: 200;"></span></div>
+    </div>
+    </span> <span class="one-hour-block">
+    <div class="big-grid-container">
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('adbOne'); highlightElement('adbOne_spouse'); highlightElement('adbOne_child')" onmouseout="removeHighlight('adbOne'); removeHighlight('adbOne_spouse'); removeHighlight('adbOne_child')">Accidental Death</div>
+      <div class="big-grid-item"><span class="text-face" id="adbOne" onmouseover="highlightElement('adbOne')" onmouseout="removeHighlight('adbOne')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="adbOne_spouse" onmouseover="highlightElement('adbOne_spouse')" onmouseout="removeHighlight('adbOne_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="adbOne_child" onmouseover="highlightElement('adbOne_child')" onmouseout="removeHighlight('adbOne_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('autoOne'); highlightElement('autoOne_spouse'); highlightElement('autoOne_child')" onmouseout="removeHighlight('autoOne'); removeHighlight('autoOne_spouse'); removeHighlight('autoOne_child')">Auto Accident</div>
+      <div class="big-grid-item"><span class="text-face" id="autoOne" onmouseover="highlightElement('autoOne')" onmouseout="removeHighlight('autoOne')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="autoOne_spouse" onmouseover="highlightElement('autoOne_spouse')" onmouseout="removeHighlight('autoOne_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="autoOne_child" onmouseover="highlightElement('autoOne_child')" onmouseout="removeHighlight('autoOne_child')" style="font-weight: 200;"></span></div>
+      <div class="big-grid-item product-sub-title" onmouseover="highlightElement('ccOne'); highlightElement('ccOne_spouse'); highlightElement('ccOne_child')" onmouseout="removeHighlight('ccOne'); removeHighlight('ccOne_spouse'); removeHighlight('ccOne_child')">Common Carrier</div>
+      <div class="big-grid-item"><span class="text-face" id="ccOne" onmouseover="highlightElement('ccOne')" onmouseout="removeHighlight('ccOne')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="ccOne_spouse" onmouseover="highlightElement('ccOne_spouse')" onmouseout="removeHighlight('ccOne_spouse')"></span></div>
+      <div class="big-grid-item"><span class="text-face" id="ccOne_child" onmouseover="highlightElement('ccOne_child')" onmouseout="removeHighlight('ccOne_child')" style="font-weight: 200;"></span></div>
+    </div>
+    </span> </span> <span class="seniorHideAB">
+    <div id="income-protection" class="big-grid-container">
+      <div class="big-grid-item"><span class="product-title" style="margin-top: 25px;">INCOME PROTECTION</span></div>
+      <div class="grid-center-bottom"></div>
+      <div class="grid-center-bottom"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"><span class="product-sub-title">Any Cause of Death</span><span class="product-sub-sub-title">10RC</span></div>
+      <div class="big-grid-item"> 
+<span class="seniorHideA">
+<span class="two-hour-block">
+	<div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increaseIncome('tenrcInputTwoA', 'A')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduceIncome('tenrcInputTwoA', 'A')" class="button-edit"> </div>
+          <input type="text" id="tenrcInputTwoA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'A')" maxlength="10" placeholder="INCOME">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('tenrcInputTwoA')" class="button-edit"> </div>
+        </div>
+        <div style="text-align: center;"> <span class="option-face-income" id="yearsIncomeTwoA" style="font-weight: bold;"></span>
+          <span class="option-face-income" id="yearsIncomeTwoA2"></span> </div>
+        </span>
+	
+<span class="one-hour-block">
+	<div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increaseIncome('tenrcInputOneA', 'A')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduceIncome('tenrcInputOneA', 'A')" class="button-edit"> </div>
+          <input type="text" id="tenrcInputOneA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'A')" maxlength="10" placeholder="INCOME">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('tenrcInputOneA')" class="button-edit"> </div>
+        </div>
+        <div style="text-align: center;"> <span class="option-face-income" id="yearsIncomeOneA" style="font-weight: bold;"></span>
+          <span class="option-face-income" id="yearsIncomeOneA2"></span> </div>
+        </span>
+
+
+		</span>
+		</div>
+      <div class="big-grid-item"> <span class="seniorHideB">
+<span class="two-hour-block">
+	<div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increaseIncome('tenrcInputTwoB', 'B')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduceIncome('tenrcInputTwoB', 'B')" class="button-edit"> </div>
+          <input type="text" id="tenrcInputTwoB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'B')" maxlength="10" placeholder="INCOME">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('tenrcInputTwoB')" class="button-edit"> </div>
+        </div>
+        <div style="text-align: center;"> <span class="option-face-income" id="yearsIncomeTwoB" style="font-weight: bold;"></span>
+          <span class="option-face-income" id="yearsIncomeTwoB2"></span> </div>
+</span> 
+
+<span class="one-hour-block">
+	<div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increaseIncome('tenrcInputOneB', 'B')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduceIncome('tenrcInputOneB', 'B')" class="button-edit"> </div>
+          <input type="text" id="tenrcInputOneB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'B')" maxlength="10" placeholder="INCOME">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('tenrcInputOneB')" class="button-edit"> </div>
+        </div>
+        <div style="text-align: center;"> <span class="option-face-income" id="yearsIncomeOneB" style="font-weight: bold;"></span>
+          <span class="option-face-income" id="yearsIncomeOneB2"></span> </div>
+</span>  </span> </div>
+      <div class="big-grid-item"> </div>
+    </div>
+    <div class="big-grid-container">
+      <div class="big-grid-item"><span class="product-title seniorHideAB" style="margin-top: 25px;">ACCIDENTAL DEATH</span></div>
+      <div class="big-grid-item"></div>
+		
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"></div>
+      <div class="big-grid-item"><span class="product-sub-title seniorHideAB">Debt Protection</span></div>
+      <div class="big-grid-item"> 
+<span class="seniorHideA">
+	
+	<span class="two-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('adbInputTwoA')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('adbInputTwoA')" class="button-edit"> </div>
+          <input type="text" id="adbInputTwoA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'A'); calculateA71Values('Two')" maxlength="9" placeholder="ADB">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('adbInputTwoA'); calculateA71Values('Two')" class="button-edit"> </div>
+        </div>
+</span>
+<span class="one-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('adbInputOneA')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('adbInputOneA')" class="button-edit"> </div>
+          <input type="text" id="adbInputOneA" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'A'); calculateA71Values('One')" maxlength="9" placeholder="ADB">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('adbInputOneA'); calculateA71Values('One')" class="button-edit"> </div>
+        </div>
+</span>
+    </span>
+		</div>
+		<div class="big-grid-item">  <span class="seniorHideB"> 
+
+	<span class="two-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('adbInputTwoB')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('adbInputTwoB')" class="button-edit"> </div>
+          <input type="text" id="adbInputTwoB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('Two', 'B'); calculateA71Values('Two')" maxlength="9" placeholder="ADB">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('adbInputTwoB'); calculateA71Values('Two')" class="button-edit"> </div>
+        </div>
+</span>
+<span class="one-hour-block">
+        <div class="input-container">
+          <div class="button-edit-container"> <img src="img/increase.png" alt="INCREASE" onClick="increase('adbInputOneB')" class="button-edit"> <img src="img/reduce.png" alt="REDUCE" onClick="reduce('adbInputOneB')" class="button-edit"> </div>
+          <input type="text" id="adbInputOneB" class="option-face" oninput="optionFormatCurrency(this)" onblur="clearJunk(this); minInput(this, 1000); calculatePremium('One', 'B'); calculateA71Values('One')" maxlength="9" placeholder="ADB">
+          <div class="button-edit-remove-container"> <img src="img/remove.png" alt="REMOVE" onClick="remove('adbInputOneB'); calculateA71Values('One')" class="button-edit"> </div>
+        </div>
+</span>
+</span> 
+			</div>
+    </div>
+    </span>
+  </form>
+</div>
+<div class="no-slide" style="width: 100%; margin: 0px;">
+  <div style="text-align: right; margin-right: 2%;">
+
+	  <button type="button" class="button-goto no-slide" onclick="summarySheet()">Summary</button>
+
+	  <button type="button" id="back-to-needs" class="button-goto no-slide">&lt;&lt; NEEDS ANALYSIS</button>
+    <button type="button" id="toggleButton" class="button-toggle-edit" onClick="toggleEdit('button-edit'); toggleEdit('hide-edit')">HIDE EDIT</button>
+    <button type="button" class="option-button-clear" onClick="optionClearFaceAmounts()">CLEAR</button>
+  </div>
+  <div class="hide-edit" style="text-align: center;"> 
+	  
+	  <span class="two-hour-inline"> <span id="premiumA71Two"></span> | <span id="resultTwoA"></span> | <span id="resultTwoB"></span> | <span id="resultChildRiderTwo"></span> </span>
+	  
+	  <span class="one-hour-inline"> <span id="premiumA71One"></span> | <span id="resultOneA"></span> | <span id="resultOneB"></span> | <span id="resultChildRiderOne"></span> </span> </div>
+  <div class="button-goto-grid no-slide hide-edit">
+    <div>
+      <div><!--#include virtual="option_stats.html" --></div>
+    </div>
+    <div class="isLicensed"> A71: <span class="two-hour-inline">
+      <select id="valueSelectTwo" class="option-drop">
+        <option value="600">600</option>
+        <option value="500">500</option>
+        <option value="400">400</option>
+        <option value="300">300</option>
+        <option value="200">200</option>
+        <option value="100">100</option>
+        <option value="0" selected>None</option>
+      </select>
+      </span> <span class="one-hour-inline">
+      <select id="valueSelectOne" class="option-drop">
+        <option value="600">600</option>
+        <option value="500">500</option>
+        <option value="400">400</option>
+        <option value="300">300</option>
+        <option value="200">200</option>
+        <option value="100">100</option>
+        <option value="0" selected>None</option>
+      </select>
+      </span>
+      <input type="checkbox" id="spouseA71Checkbox" class="option-checkbox" disabled>
+      Spouse |
+      <input type="checkbox" id="childA71Checkbox" class="option-checkbox" disabled>
+      Child </div>
+  </div>
+</div>
+	</div>
+<script>
+function changeText(button, newText) {
+  button.textContent = newText;
+}
+	
+function showHide(show, hide, display) {
+  // Get all elements with the 'show' class
+  var showElements = document.getElementsByClassName(show);
+  
+  // Get all elements with the 'hide' class
+  var hideElements = document.getElementsByClassName(hide);
+
+  // Show all elements with the 'show' class
+  for (var i = 0; i < showElements.length; i++) {
+    showElements[i].style.display = display;
+  }
+
+  // Hide all elements with the 'hide' class
+  for (var i = 0; i < hideElements.length; i++) {
+    hideElements[i].style.display = 'none';
+  }
+}
+	
+function planStyle(hours) {
+//UNHIDE hourTitle in case it was hidden
+  document.getElementById("hourTitle").style.display = '';
+
+	if (hours === "Two") {
+    document.querySelector('.option-bigboy-container').style.boxShadow = '0 0 50px rgba(0,85,140,.5)';
+    document.querySelector('.option-bigboy-container').style.backgroundImage = 'url("img/globe_bg_watermark_blue.png")';
+    document.getElementById('twoHourButton').style.backgroundColor = '#33AEFF';
+    document.getElementById('twoHourButton').style.border = '2px solid rgba(0,0,0,1)';
+    document.getElementById('oneHourButton').style.backgroundColor = '';
+    document.getElementById('oneHourButton').style.border = '';
+    document.getElementById('hourTitle').textContent = document.getElementById('twoHourButton').textContent;
+	}
+	if (hours === "One") {
+    document.querySelector('.option-bigboy-container').style.boxShadow = '0 0 50px rgba(0, 0, 0, 0.25)';
+    document.querySelector('.option-bigboy-container').style.backgroundImage = 'url("img/globe_bg_watermark.png")';
+    document.getElementById('twoHourButton').style.backgroundColor = '';
+    document.getElementById('twoHourButton').style.border = '';
+    document.getElementById('oneHourButton').style.backgroundColor = '#7E8693';
+    document.getElementById('oneHourButton').style.border = '2px solid rgba(0, 0, 0, 1)';
+    document.getElementById('hourTitle').textContent = document.getElementById('oneHourButton').textContent;
+	}
+}
+// JavaScript functions to add and remove the highlight class
+function highlightElement(elementId) {
+  var element = document.getElementById(elementId);
+  element.classList.add('highlight');
+}
+
+function removeHighlight(elementId) {
+  var element = document.getElementById(elementId);
+  element.classList.remove('highlight');
+}
+</script> 
+<script src="js/optionPremiums.js"></script> 
+<script>
+  // Select all forms that start with "optionMyForm"
+  const forms = document.querySelectorAll('form[id^="optionMyForm"]');
+
+  // Iterate over each form
+  forms.forEach((form) => {
+    // Disable autofill for each input field in the form
+    Array.from(form.elements).forEach((element) => {
+      if (element.tagName.toLowerCase() === "input") {
+        element.setAttribute("autocomplete", "off");
+      }
+    });
+  });
+</script>
+<script src="js/seniorDropAdjuster.js"></script>
+
+<div id="overlay" class="overlay no-slide">
+    <div class="overlay-content">
+        <!-- Your overlay content goes here -->
+        <div class="image-overlay-container">
+            <img src="img/slides/foc-overlay-front.jpg" alt="FOC FRONT">
+            <img src="img/slides/foc-overlay-back.jpg" alt="FOC BACK">
+        </div>
+    </div>
+</div>
+<script src="js/overlay.js"></script>
+<script src="js/summarySheet.js"></script>

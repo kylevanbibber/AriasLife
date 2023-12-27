@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Video Extractor</title>
+</head>
+<body>
+  <input type="file" id="qr-code-input" accept="image/">
+  <div id="qr-code-result"></div>
+  <div id="video-url"></div>
+
+  <iframe id="hidden-iframe" style="display: none;"></iframe>
+
+  <script>
+    const inputElement = document.getElementById('qr-code-input');
+    const resultElement = document.getElementById('qr-code-result');
+    const videoUrlElement = document.getElementById('video-url');
+    const hiddenIframe = document.getElementById('hidden-iframe');
+
+    inputElement.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const image = new Image();
+          image.src = event.target.result;
+
+          image.onload = async () => {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            ctx.drawImage(image, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+            if (code) {
+              const decodedURL = code.data;
+              resultElement.textContent = 'Decoded URL: ' + decodedURL;
+
+              // Visit the decoded URL in the hidden iframe
+              hiddenIframe.src = decodedURL;
+
+              // Listen for the iframe's load event to extract the video URL
+              hiddenIframe.onload = () => {
+                const iframeDocument = hiddenIframe.contentDocument || hiddenIframe.contentWindow.document;
+                const videoElement = iframeDocument.querySelector('iframe[src="youtube.com"], iframe[src*="vimeo.com"], video');
+
+                if (videoElement) {
+                  const videoSrc = videoElement.src;
+                  videoUrlElement.textContent = 'Extracted Video URL: ' + videoSrc;
+                } else {
+                  videoUrlElement.textContent = 'No video found on the visited page.';
+                }
+              };
+            } else {
+              resultElement.textContent = 'QR code not found or could not be decoded.';
+            }
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.0.0/dist/jsQR.js"></script>
+</body>
+</html>

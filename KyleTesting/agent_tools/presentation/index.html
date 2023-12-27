@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Button Popup Example</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="openPopup()">Open Popup</button>
+
+    <script>
+        function openPopup() {
+            var aspectRatio = 16 / 9;
+            var screenWidth = screen.width;
+            var screenHeight = screen.height;
+            var width = Math.floor(screenHeight * aspectRatio * 0.8);
+            var height = Math.floor(screenHeight * 0.8);
+            var left = Math.floor((screenWidth - width) / 2);
+            var top = Math.floor((screenHeight - height) / 2);
+
+            var popup = window.open('https://thekeefersuccess.com/WinnersCircle/agent_tools/presentation/presentation.html', '_blank', 'width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
+            
+            if (popup) {
+                // Popup blocked by the browser
+                popup.focus();
+            }
+        }
+    </script>
+</body>
+</html>

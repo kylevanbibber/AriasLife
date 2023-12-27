@@ -1,0 +1,476 @@
+<!doctype html>
+<link rel="stylesheet" href="css/needs-style.css" type="text/css">
+<script src="js/needsFormat.js"></script>
+<div id="needs-anal-slide" class="bigboy-container no-slide">
+  <div class="needs-container">
+    <form id="needMyForm" onreset="resetForm()">
+      <div class="pi-item">
+        <div>
+          <input type="text" id="primaryName2" class="pi-text" placeholder="Primary Name" oninput="syncInputs(this.id, 'primaryName3')" onBlur="updateTextContentByIdToClass('primaryName2', 'primary-name-display', 'PRIMARY')">
+          <input type="text" id="primaryAge2" class="pi-text-age" name="ageA" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('primaryAge2')" onfocus="blockNonNumericChars('primaryAge2')" onblur="calculateAge('primaryAge2', 'dobTextA'); sendAgeSelection('dobTextA', 'optionAgeInputA'); calculatePremium('Two', 'A')">
+          <select id="needsSexInputA" class="needs-drop" onblur="sendDropdownSelection('needsSexInputA', 'optionSexInputA'); calculatePremium('Two', 'A')">
+            <option value="male" selected>M</option>
+            <option value="female">F</option>
+          </select>
+          <select id="needsTobInputA" class="needs-drop" onChange="tobaccoCheckboxSync('needsTobInputA', 'needsTobaccoA')" onblur="sendDropdownSelection('needsTobInputA', 'optionTobInputA'); calculatePremium('Two', 'A')">
+            <option value="ntu" selected>NTU</option>
+            <option value="tu">TU</option>
+          </select>
+          <span class="pi-dobText" id="dobTextA"></span> </div>
+        <div>
+          <input type="text" id="spouseName2" class="pi-text" placeholder="Spouse Name" oninput="syncInputs(this.id, 'spouseName3')" onBlur="needsActivateIncome(this.id); updateTextContentByIdToClass('spouseName2', 'spouse-name-display', 'SPOUSE')">
+          <input type="text" id="spouseAge2" class="pi-text-age" name="ageB" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('spouseAge2')" onfocus="blockNonNumericChars('spouseAge2')" onblur="calculateAge('spouseAge2', 'dobTextB'); sendAgeSelection('dobTextB', 'optionAgeInputB'); calculatePremium('Two', 'B')">
+          <select id="needsSexInputB" class="needs-drop" onblur="sendDropdownSelection('needsSexInputB', 'optionSexInputB'); calculatePremium('Two', 'B')">
+            <option value="male">M</option>
+            <option value="female" selected>F</option>
+          </select>
+          <select id="needsTobInputB" class="needs-drop" onChange="tobaccoCheckboxSync('needsTobInputB', 'needsTobaccoB')" onblur="sendDropdownSelection('needsTobInputB', 'optionTobInputB'); calculatePremium('Two', 'B')">
+            <option value="ntu" selected>NTU</option>
+            <option value="tu">TU</option>
+          </select>
+          <span class="pi-dobText" id="dobTextB"></span> </div>
+        <div id="c1" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputC" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputC'); famStatus()">
+            <input type="text" id="needAgeInputC" class="pi-text-age" name="ageC" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputC')" onfocus="blockNonNumericChars('needAgeInputC')" onblur="calculateAge('needAgeInputC', 'dobTextC'); sendAgeSelection('dobTextC', 'optionAgeInputC')">
+            <select id="needsSexInputC" class="needs-drop" onblur="sendDropdownSelection('needsSexInputC', 'optionSexInputC')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextC"></span> </div>
+        </div>
+        <div id="c2" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputD" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputD'); famStatus()">
+            <input type="text" id="needAgeInputD" class="pi-text-age" name="ageD" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputD')" onfocus="blockNonNumericChars('needAgeInputD')" onblur="calculateAge('needAgeInputD', 'dobTextD')">
+            <select id="needsSexInputD" class="needs-drop" onblur="sendDropdownSelection('needsSexInputD', 'optionSexInputD')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextD"></span> </div>
+        </div>
+        <div id="c3" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputE" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputE'); famStatus()">
+            <input type="text" id="needAgeInputE" class="pi-text-age" name="ageE" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputE')" onfocus="blockNonNumericChars('needAgeInputE')" onblur="calculateAge('needAgeInputE', 'dobTextE')">
+            <select id="needsSexInputE" class="needs-drop" onblur="sendDropdownSelection('needsSexInputE', 'optionSexInputE')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextE"></span> </div>
+        </div>
+        <div id="c4" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputF" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputF'); famStatus()">
+            <input type="text" id="needAgeInputF" class="pi-text-age" name="ageF" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputF')" onfocus="blockNonNumericChars('needAgeInputF')" onblur="calculateAge('needAgeInputF', 'dobTextF')">
+            <select id="needsSexInputF" class="needs-drop" onblur="sendDropdownSelection('needsSexInputF', 'optionSexInputF')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextF"></span> </div>
+        </div>
+        <div id="c5" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputG" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputG'); famStatus()">
+            <input type="text" id="needAgeInputG" class="pi-text-age" name="ageG" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputG')" onfocus="blockNonNumericChars('needAgeInputG')" onblur="calculateAge('needAgeInputG', 'dobTextG')">
+            <select id="needsSexInputG" class="needs-drop" onblur="sendDropdownSelection('needsSexInputG', 'optionSexInputG')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextG"></span> </div>
+        </div>
+        <div id="c6" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputH" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputH'); famStatus()">
+            <input type="text" id="needAgeInputH" class="pi-text-age" name="ageH" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputH')" onfocus="blockNonNumericChars('needAgeInputH')" onblur="calculateAge('needAgeInputH', 'dobTextH')">
+            <select id="needsSexInputH" class="needs-drop" onblur="sendDropdownSelection('needsSexInputH', 'optionSexInputH')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextH"></span> </div>
+        </div>
+        <div id="c7" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputI" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputI'); famStatus()">
+            <input type="text" id="needAgeInputI" class="pi-text-age" name="ageI" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputI')" onfocus="blockNonNumericChars('needAgeInputI')" onblur="calculateAge('needAgeInputI', 'dobTextI')">
+            <select id="needsSexInputI" class="needs-drop" onblur="sendDropdownSelection('needsSexInputI', 'optionSexInputI')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextI"></span> </div>
+        </div>
+        <div id="c8" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputJ" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputJ'); famStatus()">
+            <input type="text" id="needAgeInputJ" class="pi-text-age" name="ageJ" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputJ')" onfocus="blockNonNumericChars('needAgeInputJ')" onblur="calculateAge('needAgeInputJ', 'dobTextJ')">
+            <select id="needsSexInputJ" class="needs-drop" onblur="sendDropdownSelection('needsSexInputJ', 'optionSexInputJ')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextJ"></span> </div>
+        </div>
+        <div id="c9" class="hidden-pi">
+          <div>
+            <input type="text" id="needNameInputK" class="pi-text" placeholder="Child Name" onblur="syncInputs(this.id, 'optionNameInputK'); famStatus()">
+            <input type="text" id="needAgeInputK" class="pi-text-age" name="ageK" maxlength="8" placeholder="MMDDYYYY" oninput="blockNonNumericChars('needAgeInputK')" onfocus="blockNonNumericChars('needAgeInputK')" onblur="calculateAge('needAgeInputK', 'dobTextK')">
+            <select id="needsSexInputK" class="needs-drop" onblur="sendDropdownSelection('needsSexInputK', 'optionSexInputK')">
+              <option value="male" selected>M</option>
+              <option value="female">F</option>
+            </select>
+            <span class="pi-dobText" id="dobTextK"></span> </div>
+        </div>
+        <div>
+          <div>
+            <button class="needs-button" id="revealBtn" type="button">ADD CHILD</button>
+            <button class="needs-button-remove" id="hideBtn" type="button">REMOVE CHILD</button>
+          </div>
+        </div>
+      </div>
+      <div class="needs-title" style="grid-template-columns: 3fr 1fr 1fr 1fr; display: grid;">
+        <div>
+          <div><strong>PRELIMINARY MEDICAL QUESTIONS</strong></div>
+        </div>
+        <div class="needs-psc"><span class="primary-name-display"></span></div>
+        <div class="needs-psc"><span class="spouse-name-display"></span></div>
+        <div class="needs-psc">CHILD</div>
+      </div>
+      <div class="needs-content">
+        <div class="needs-question">Do you take any prescription medications?</div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsMedsA" name="needsMedsA" value="false">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsMedsB" name="needsMedsB" value="false">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsMedsC" name="needsMedsC" value="false">
+        </div>
+        <div class="needs-question">Have you ever had any health issues in your lifetime, any family history of Cancer, Diabetes or Heart Disease?</div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsHealthIssuesA" name="needsHealthIssuesA" value="false">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsHealthIssuesB" name="needsHealthIssuesB" value="false">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsHealthIssuesC" name="needsHealthIssuesC" value="false">
+        </div>
+        <div class="needs-question">Have you ever had any arrests including DUI?</div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsArrestedA" name="needsArrestedA" value="false">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsArrestedB" name="needsArrestedB" value="false">
+        </div>
+        <div class="needs-item"> </div>
+        <div class="needs-question">Used tobacco/nicotine in the past 12 months?</div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsTobaccoA" name="needsTobaccoA" value="false" onchange="updateTobOption('needsTobaccoA', 'needsTobInputA'); updateTobOption('needsTobaccoA', 'optionTobInputA')">
+        </div>
+        <div class="needs-item">
+          <input type="checkbox" class="needs-checkbox" id="needsTobaccoB" name="needsTobaccoB" value="false" onchange="updateTobOption('needsTobaccoB', 'needsTobInputB'); updateTobOption('needsTobaccoB', 'optionTobInputB')">
+        </div>
+        <div class="needs-item"> </div>
+      </div>
+      <div class="needs-title" style="grid-template-columns: 3fr 1.5fr 1.5fr; display: grid;">
+        <div><strong>HOUSEHOLD INFORMATION</strong></div>
+        <div class="needs-psc"><span class="primary-name-display"></span></div>
+        <div class="needs-psc"><span class="spouse-name-display"></span></div>
+      </div>
+      <div class="needs-content-household">
+        <div class="needs-question">What is your hourly wage/monthly take home pay?</div>
+        <div class="needs-item" style="flex-direction: column;">
+          <div>
+            <input type="text" id="needsIncomeHourlyA" class="needs-text" oninput="optionFormatCurrency(this)" onblur="minHourly('needsIncomeHourlyA'); clearJunk(this); syncHourly(this.id, 'optionHourlyInputA')" maxlength="3" placeholder="Hourly" style="width: 60px;">
+            <button type="button" class="needs-button-use" id="toggleMonthlyA" onClick="toggleMonthly('A', this)">USE MONTHLY</button>
+          </div>
+          <div id="monthlyBasedA" style="display: none;">
+            <input type="text" id="needsIncomeA" class="needs-text" oninput="optionFormatCurrency(this)" onblur="minInput(this, 1000); calculateHourly('needsIncomeA', 'needsIncomeHourlyA', 'hoursWeeklyA', 'optionHourlyInputA')" maxlength="7" placeholder="Monthly" style="width: 120px;">
+            <br>
+            Hrs/wk:
+            <input type="text" id="hoursWeeklyA" class="needs-text" placeholder="Hrs/wk" style="width: 60px;" value="40" onblur="calculateHourly('needsIncomeA', 'needsIncomeHourlyA', 'hoursWeeklyA', 'optionHourlyInputA')">
+          </div>
+        </div>
+        <div class="needs-item" style="flex-direction: column;">
+          <div>
+            <input type="text" id="needsIncomeHourlyB" class="needs-text" oninput="optionFormatCurrency(this)" onblur="minHourly('needsIncomeHourlyB'); clearJunk(this); syncHourly(this.id, 'optionHourlyInputB'); famStatus()" maxlength="3" placeholder="Hourly" style="width: 60px;" disabled>
+            <button type="button" class="needs-button-use" id="toggleMonthlyB" onClick="toggleMonthly('B', this)" disabled>USE MONTHLY</button>
+          </div>
+          <div id="monthlyBasedB" style="display: none;">
+            <input type="text" id="needsIncomeB" class="needs-text" oninput="optionFormatCurrency(this)" onblur="minInput(this, 1000); calculateHourly('needsIncomeB', 'needsIncomeHourlyB', 'hoursWeeklyB', 'optionHourlyInputB'); famStatus()" maxlength="7" placeholder="Monthly" style="width: 120px;">
+            <br>
+            Hrs/wk:
+            <input type="text" id="hoursWeeklyB" class="needs-text" placeholder="Hrs/wk" style="width: 60px;" value="40" onblur="calculateHourly('needsIncomeB', 'needsIncomeHourlyB', 'hoursWeeklyB', 'optionHourlyInputB')">
+          </div>
+        </div>
+        <div class="needs-question">How much life insurance do you have through work?</div>
+        <div class="needs-item">
+          <input type="text" id="needsWorkinsA" class="needs-text" name="needsWorkinsA" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Coverage">
+        </div>
+        <div class="needs-item">
+          <input type="text" id="needsWorkinsB" class="needs-text" name="needsWorkinsB" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Coverage">
+        </div>
+        <div class="needs-question">Do you have any life insurance outside of work?</div>
+        <div class="needs-item" style="display: flex; flex-direction: column; grid-template-rows: auto auto;">
+          <div>
+            <input type="text" id="needsOutsideWLA" class="needs-text" name="needsOutsideWLA" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Whole Life">
+          </div>
+          <div>
+            <input type="text" id="needsOutsideTERMA" class="needs-text" name="needsOutsideTERMA" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Term">
+          </div>
+        </div>
+        <div class="needs-item" style="display: flex; flex-direction: column; grid-template-rows: auto auto;">
+          <div>
+            <input type="text" id="needsOutsideWLB" class="needs-text" name="needsOutsideWLB" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Whole Life">
+          </div>
+          <div>
+            <input type="text" id="needsOutsideTERMB" class="needs-text" name="needsOutsideTERMB" oninput="optionFormatCurrency(this)" maxlength="10" placeholder="Term">
+          </div>
+        </div>
+        <div class="needs-question">Do you have a checking account?</div>
+        <div class="needs-item" style="grid-column-end: span 2;">
+          <input type="checkbox" class="needs-checkbox" id="needsBankP" name="needsBankP" value="false">
+        </div>
+        <div></div>
+        <div style="margin: 10px; grid-column-end: span 2; display: flex; justify-content: center; align-content: center; align-items: center;">
+          <select id="planType" class="needs-drop" onChange="planTypeTitle()">
+            <option value="default" selected>CHOOSE PLAN TYPE</option>
+            <option value="recBasic">REC BASIC</option>
+            <option value="hourPower">HOUR POWER</option>
+          </select>
+          <script>
+// Plan Type sync between both windows
+let planTypeSync = document.getElementById('planType');
+
+planTypeSync.addEventListener('change', function() {
+    localStorage.setItem('planType', this.value);
+});
+
+function syncPlanTypeSelection(newValue) {
+    planTypeSync.value = newValue;
+    planTypeTitle();
+	updateTitle();
+    optionResetButton();
+}
+
+window.addEventListener('storage', function(event) {
+    if (event.key === 'planType') {
+        syncPlanTypeSelection(event.newValue);
+    }
+}, false);
+
+		
+function planTypeTitle() {
+	var planType = document.getElementById('planType').value;
+	
+	if (planType === "hourPower") {
+		document.getElementById('plan-type-title').textContent = "Hour Power";
+	} else {
+		document.getElementById('plan-type-title').textContent = "Permanent Benefits";
+        document.getElementById("needsIncomeHourlyA").style.border = '';
+        document.getElementById("needsIncomeHourlyB").style.border = '';
+	}
+}
+
+		
+        // Function to handle option selection
+        function handleOptionSelection() {
+            var selectedOption = document.getElementById("planType").value;
+
+            if (selectedOption === "hourPower") {
+                checkForIncome();
+                showHide('two-hour-block', 'one-hour-block', 'block');
+                showHide('two-hour-inline', 'one-hour-inline', 'inline');
+				document.getElementById('resetPlansText').style.visibility = 'visible';
+				document.getElementById('income-protection').style.visibility = 'visible';
+            } else if (selectedOption === "recBasic") {
+                autoRecBasic('REC');
+                autoRecBasic('BASIC');
+                planStyle('Two');
+                showHide('two-hour-block', 'one-hour-block', 'block');
+                showHide('two-hour-inline', 'one-hour-inline', 'inline');
+				document.getElementById('resetPlansText').style.visibility = 'visible';
+            } else if (selectedOption === "custom") {
+                document.getElementById('oneHourButton').textContent = 'BASIC';
+                document.getElementById('twoHourButton').textContent = 'RECOMMENDED';
+				document.getElementById('resetPlansText').style.visibility = 'hidden';
+                planStyle('Two');
+                showHide('two-hour-block', 'one-hour-block', 'block');
+                showHide('two-hour-inline', 'one-hour-inline', 'inline');
+				document.getElementById('income-protection').style.visibility = 'visible';
+            }
+        }
+    </script>
+          <button class="needs-button" type="button" onclick="needsNextButton()" style="margin-left: 20px; margin-top: 5px;">NEXT</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="js/piFormatAge.js"></script> 
+<script src="js/syncInputs.js"></script> 
+<script>
+// Add event listeners for age and hour fields
+document.getElementById('primaryAge2').addEventListener('input', clearRedBorder);
+document.getElementById('primaryName2').addEventListener('input', clearRedBorder);
+document.getElementById('spouseAge2').addEventListener('input', clearRedBorder);
+document.getElementById('spouseName2').addEventListener('input', clearRedBorder);
+document.getElementById('needsIncomeHourlyA').addEventListener('input', clearIncomeRedBorder);
+document.getElementById('needsIncomeHourlyB').addEventListener('input', clearIncomeRedBorder);
+document.getElementById('needsIncomeA').addEventListener('input', clearIncomeRedBorder);
+document.getElementById('needsIncomeB').addEventListener('input', clearIncomeRedBorder);
+
+function clearRedBorder() {
+    this.style.border = ''; // Clear red border when user corrects the error
+}
+
+function clearIncomeRedBorder() {
+    document.getElementById('needsIncomeHourlyA').style.border = ''; // Clear red border for needsIncomeHourlyA
+    document.getElementById('needsIncomeA').style.border = ''; // Clear red border for needsIncomeA
+    document.getElementById('needsIncomeHourlyB').style.border = ''; // Clear red border for needsIncomeHourlyB
+    document.getElementById('needsIncomeB').style.border = ''; // Clear red border for needsIncomeB
+}
+
+
+function needsNextButton() {
+    var selectedOption = document.getElementById("planType").value;
+    var needsIncomeHourlyA = Number(document.getElementById("needsIncomeHourlyA").value.replace(/\D/g, ''));
+    var needsIncomeHourlyB = Number(document.getElementById("needsIncomeHourlyB").value.replace(/\D/g, ''));
+    var primaryName = document.getElementById('primaryName2').value;
+    var primaryAge = document.getElementById('primaryAge2').value;
+    var spouseName = document.getElementById('spouseName2').value;
+    var spouseAge = document.getElementById('spouseAge2').value;
+
+    var errorPrimary = false;
+    var errorSpouse = false;
+
+    // Check if a name is entered without an age for primary
+    if (primaryName && !primaryAge) {
+        document.getElementById('primaryAge2').style.border = '2px solid red';
+        errorPrimary = true;
+    } else {
+        document.getElementById('primaryAge2').style.border = ''; // Clear red border
+    }
+
+    // Check if a name is entered without an age for spouse
+    if (spouseName && !spouseAge) {
+        document.getElementById('spouseAge2').style.border = '2px solid red';
+        errorSpouse = true;
+    } else {
+        document.getElementById('spouseAge2').style.border = ''; // Clear red border
+    }
+
+    if (selectedOption === "hourPower" && needsIncomeHourlyA <= 0 && needsIncomeHourlyB <= 0) {
+        handleOptionSelection();
+    } else if (selectedOption === "default") {
+        alert("Choose a Plan Type");
+    } else {
+        if (errorPrimary && errorSpouse) {
+            alert("Please enter the age for both Primary and Spouse.");
+        } else if (errorPrimary) {
+            alert("Please enter the age for the Primary.");
+        } else if (errorSpouse) {
+            alert("Please enter the age for the Spouse.");
+        } else if (!primaryName && !primaryAge) {
+            document.getElementById('primaryName2').style.border = '2px solid red';
+            document.getElementById('primaryAge2').style.border = '2px solid red';
+            alert("Please enter at least a name and age for the Primary.");
+        } else if (!spouseName && spouseAge) {
+            document.getElementById('spouseName2').style.border = '2px solid red';
+            alert("Please enter a name for the Spouse.");
+        } else {
+            showSlide(currentSlide + 1);
+            handleOptionSelection();
+            hideEdit('button-edit');
+            hideEdit('hide-edit');
+        }
+    }
+}
+
+
+function optionResetButton() {
+    var selectedOption = document.getElementById("planType").value;
+    var needsIncomeHourlyA = Number(document.getElementById("needsIncomeHourlyA").value.replace(/\D/g, ''));
+    var needsIncomeHourlyB = Number(document.getElementById("needsIncomeHourlyB").value.replace(/\D/g, ''));
+	
+	if (selectedOption === "hourPower" && needsIncomeHourlyA <= 0 && needsIncomeHourlyB <= 0) {
+	handleOptionSelection();
+	} else if (selectedOption === "default") {
+		alert("Choose a Plan Type");
+		showSlide(currentSlide - 1);
+	} else {
+		handleOptionSelection();
+		hideEdit('button-edit');
+		hideEdit('hide-edit');
+	}
+}
+	
+function needsActivateIncome(elementId) {
+	value = document.getElementById(elementId).value;
+    
+	
+	
+	if (value !== '') {
+	document.getElementById('needsIncomeHourlyB').disabled = false;
+	document.getElementById('toggleMonthlyB').disabled = false;
+	} else {
+	document.getElementById('needsIncomeHourlyB').disabled = true;
+	document.getElementById('toggleMonthlyB').disabled = true;
+    document.getElementById('needsIncomeHourlyB').value = '';
+    document.getElementById('needsIncomeB').value = '';
+    document.getElementById('optionHourlyInputB').value = '';
+	}
+}
+	const needMyForm = document.getElementById("needMyForm"); // Replace "needMyForm" with the actual ID of your form
+
+// Disable autofill for each input field in the form
+Array.from(needMyForm.elements).forEach((element) => {
+  if (element.tagName.toLowerCase() === "input") {
+    element.setAttribute("autocomplete", "off");
+  }
+});
+
+function toggleMonthly(pi, buttonElement) {
+  var needsIncomeHourly = document.getElementById("needsIncomeHourly" + pi);
+  var monthlyBasedElement = document.getElementById("monthlyBased" + pi);
+
+  if (buttonElement.textContent === "USE MONTHLY") {
+    needsIncomeHourly.disabled = true;
+    monthlyBasedElement.style.display = "block";
+    buttonElement.textContent = "USE HOURLY";
+  } else {
+    needsIncomeHourly.disabled = false;
+    monthlyBasedElement.style.display = "none";
+    buttonElement.textContent = "USE MONTHLY";
+  }
+}
+
+	
+function syncHourly(source, syncHourlyInput) {
+	var hourly = parseFloat(document.getElementById(source).value.replace(/[^\d.]/g, ''));
+	
+	if (hourly > 0) {
+
+	document.getElementById(syncHourlyInput).value = formatFaceAmount(hourly, 'en-US', 'USD');
+	} else {
+	document.getElementById(syncHourlyInput).value = '';
+	}
+}
+	
+function calculateHourly(source, target, hours ,syncHourlyInput) {
+	var monthly = parseFloat(document.getElementById(source).value.replace(/[^\d.]/g, ''));
+	var hours = document.getElementById(hours).value;
+    var hourly;
+	
+	if (monthly > 0) {
+	hourly = monthly / 4 / hours;
+		
+	document.getElementById(target).value = formatFaceAmount(hourly, 'en-US', 'USD');	
+	document.getElementById(syncHourlyInput).value = formatFaceAmount(hourly, 'en-US', 'USD');
+	} else {
+	document.getElementById(target).value = '';
+	document.getElementById(syncHourlyInput).value = '';
+	}
+}
+</script>
+<script src="js/showHideChild.js"></script> 

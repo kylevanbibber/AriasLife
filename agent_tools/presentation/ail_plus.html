@@ -1,0 +1,26 @@
+    <div class="lab-image-div" style="background-image: url('img/slides/AIL-Plus-1.jpg'); padding: 5px;">
+		
+        <iframe id="embeddedPage" style="display: none; width: 100%; height: 84vh; border: none;"></iframe>
+		
+<div class="label-container">
+  <span id="openButton" class="pdf-button no-slide" style="margin-right: 65px;" onclick="openPres('https://ailplusmembers.com/login?utm_source=ailplus.com&utm_medium=referral&utm_campaign=domain_redirect')">OPEN AILPlus.com</span>
+</div>
+			
+<script>
+function openPres(presFile) {
+  var screenWidth = screen.availWidth;
+  var width = screenWidth > 3800 ? Math.round(screenWidth * 0.35) : Math.round(screenWidth * 0.7);
+  var height = Math.round(screen.availHeight * 0.7);
+  var top = 0;
+  var left = screenWidth > 3800 ? Math.round((screenWidth - width) / 2.61) : 0;
+
+  var presWindow = window.open(
+    presFile,
+    '_blank',
+    'toolbar=no,scrollbars=no,resizable=yes,top=' + top + ',left=' + left + ',width=' + width + ',height=' + height
+  );
+  popupWindows.push(presWindow);
+  presWindow.focus();
+}
+</script>
+    </div>

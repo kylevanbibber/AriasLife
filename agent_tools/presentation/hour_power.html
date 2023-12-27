@@ -1,0 +1,27 @@
+<div id="hour-power-slide">
+    <div class="image-div" style="background-image: url('img/slides/HOUR-POWER-father.jpg');">
+	</div>
+	
+    <div class="image-div" style="background-image: url('img/slides/HOUR-POWER-mother.jpg');">
+	</div>
+	<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select the specific slide by ID
+    var hourPowerSlide = document.getElementById('hour-power-slide');
+
+    // Select the image divs within this specific slide
+    var images = hourPowerSlide.querySelectorAll('.image-div');
+
+    // Randomly choose 0 or 1
+    var randomIndex = Math.floor(Math.random() * images.length);
+
+    // Hide all images first
+    images.forEach(function(image) {
+      image.style.display = 'none';
+    });
+
+    // Display only the randomly chosen image
+    images[randomIndex].style.display = 'block';
+  });
+</script>
+</div>

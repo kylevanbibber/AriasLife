@@ -1,0 +1,37 @@
+<div class="image-div" style="background-image: url('img/slides/WILL-AND-LIVING-WILL.jpg'); padding: 5px;">
+    <!-- HTML viewer container -->
+    <center><div id="htmlWillViewer" style="height: 91vh;"></div></center>
+    
+    <!-- Custom button to trigger loading the predefined HTML file -->
+    <div class="label-container">
+        <label id="openExampleButton" class="pdf-button no-slide">OPEN EXAMPLE</label> 
+        <label id="closeWillButton" class="close-button no-slide" style="visibility: hidden;">CLOSE</label>
+    </div>
+</div>
+<script>
+    const htmlWillViewer = document.getElementById('htmlWillViewer');
+    const closeWillButton = document.getElementById('closeWillButton');
+    const openExampleButton = document.getElementById('openExampleButton');
+    let htmlWillData = null; // Initially, no HTML is loaded
+
+    openExampleButton.addEventListener('click', function () {
+        if (htmlWillData) {
+            // If HTML is already loaded, clear it first
+            htmlWillViewer.innerHTML = '';
+        }
+
+        htmlWillData = "will_kit_explain.html"; // Set the path to your HTML file
+        const iframeTag = `<iframe id="htmlWillEmbed" src="${htmlWillData}" style="width:100%; height:100%; border:none;"></iframe>`;
+
+        htmlWillViewer.innerHTML = iframeTag;
+        closeWillButton.style.visibility = 'visible';
+        openExampleButton.style.visibility = 'hidden';
+    });
+
+    closeWillButton.addEventListener('click', function () {
+        htmlWillViewer.innerHTML = ''; // Clear the HTML viewer content
+        htmlWillData = null; // Reset the stored HTML data
+        closeWillButton.style.visibility = 'hidden';
+        openExampleButton.style.visibility = 'visible';
+    });
+</script>

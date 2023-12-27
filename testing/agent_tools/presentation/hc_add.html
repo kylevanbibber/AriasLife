@@ -1,0 +1,51 @@
+<div id="addSlide" class="image-div" style="padding: 5px;">
+    <!-- PDF viewer container -->
+    <div id="pdfADDViewer">
+        <div id="pdfADDEmbed"></div>
+    </div>
+
+    <!-- Hidden original file input -->
+    <input type="file" id="pdfADDFileInput" class="no-slide" accept=".pdf">
+
+
+	        <div class="label-container">
+            <label for="pdfADDFileInput" class="pdf-button no-slide">OPEN CERTIFICATE</label>
+            <span id="closeADDButton" class="close-button no-slide" style="visibility: hidden;">CLOSE</span>
+        </div>
+</div>
+    <!-- JavaScript for the PDF viewer -->
+    <script>
+        const pdfADDFileInput = document.getElementById('pdfADDFileInput');
+        const pdfADDViewer = document.getElementById('pdfADDViewer');
+        const closeADDButton = document.getElementById('closeADDButton');
+        let pdfADDData = null;
+
+        pdfADDFileInput.addEventListener('change', function () {
+            const file = pdfADDFileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                pdfADDData = event.target.result;
+                const embedTag = `<embed id="pdfADDEmbed" src="${pdfADDData}#view=FitH" type="application/pdf">`;
+
+                pdfADDViewer.querySelector('#pdfADDEmbed').innerHTML = embedTag;
+                closeADDButton.style.visibility = 'visible';
+
+                // Show the check mark
+                document.getElementById('preloadCertificate').querySelector('.pdf-checkmark').style.visibility = 'visible';
+            };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        closeADDButton.addEventListener('click', function () {
+            pdfADDViewer.querySelector('#pdfADDEmbed').innerHTML = ''; // Clear the PDF viewer content
+            pdfADDFileInput.value = ''; // Reset the file input value
+            pdfADDData = null; // Reset the stored PDF data
+			closeADDButton.style.visibility = 'hidden';
+            document.getElementById('preloadCertificate').querySelector('.pdf-checkmark').style.visibility = 'hidden';
+        });
+    </script>

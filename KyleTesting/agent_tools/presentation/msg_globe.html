@@ -1,0 +1,135 @@
+<!doctype html>
+<div class="image-div" style="background-image: url('img/slides/MESSAGE-FROM-GLOBE-LIFE.jpg'); padding: 5px;"> 
+  <!-- PDF viewer container -->
+  <center>
+    <div id="pdfLetterViewerCopy"></div>
+  </center>
+  
+  <!-- Hidden original file input -->
+  <input type="file" id="pdfMessageFileInput" class="no-slide" accept=".pdf">
+  
+  <!-- Custom button with label to trigger the file input -->
+  <div class="label-container">
+    <span id="qrCodeContent2" class="no-slide"></span>
+    <label for="pdfMessageFileInput" class="pdf-button no-slide">OPEN PREAPPROACH MSG</label>
+    <span id="closeMessageButton" class="close-button no-slide" style="visibility: hidden;">CLOSE</span> </div>
+</div>
+<!-- JavaScript for the PDF viewer --> 
+<script>
+        const pdfLetterFileInput = document.getElementById('pdfLetterFileInput');
+        const pdfLetterViewer = document.getElementById('pdfLetterViewer');
+        const pdfLetterViewerCopy = document.getElementById('pdfLetterViewerCopy');
+        const closeLetterButton = document.getElementById('closeLetterButton');
+        let pdfLetterData = null;
+	
+	    async function scanForQRCode(file) {
+        const fileReader = new FileReader();
+        fileReader.onload = async function() {
+            const typedArray = new Uint8Array(this.result);
+            const loadingTask = pdfjsLib.getDocument({data: typedArray});
+            const pdf = await loadingTask.promise;
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
+                const viewport = page.getViewport({ scale: 1 });
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                await page.render({ canvasContext: context, viewport: viewport }).promise;
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                if (code) {
+                    displayQRCodeLink(code.data);
+                    return;
+                }
+            }
+            document.getElementById('qrCodeContent').innerText = "";
+        };
+        fileReader.readAsArrayBuffer(file);
+    }
+
+    function displayQRCodeLink(url) {
+        let linkButton = document.createElement('span');
+        let linkButton2 = document.createElement('span');
+        linkButton.innerText = 'GROUP VIDEO';
+		linkButton.classList.add('next-button');
+linkButton.onclick = function() {
+    openPres(url);
+};
+        linkButton2.innerText = 'GROUP VIDEO';
+		linkButton2.classList.add('next-button');
+linkButton2.onclick = function() {
+    openPres(url);
+};
+document.getElementById('qrCodeContent').innerHTML = '';
+document.getElementById('qrCodeContent').appendChild(linkButton);
+document.getElementById('qrCodeContent2').innerHTML = '';
+document.getElementById('qrCodeContent2').appendChild(linkButton2);
+
+    }
+
+    pdfLetterFileInput.addEventListener('change', function() {
+        const letterFile = pdfLetterFileInput.files[0];
+        if (letterFile) {
+            scanForQRCode(letterFile);
+                const letterReader = new FileReader();
+
+                letterReader.onload = function(event) {
+                pdfLetterData = event.target.result;
+                const embedTag = (pageNum) => `<embed id="pdfLetterEmbed" src="${pdfLetterData}#page=${pageNum}&view=FitH" type="application/pdf">`;
+
+                pdfLetterViewer.innerHTML = embedTag(1); // Open on page 1
+                pdfLetterViewerCopy.innerHTML = embedTag(2); // Open on page 2
+                closeLetterButton.style.visibility = 'visible';
+                closeMessageButton.style.visibility = 'visible';
+
+                // Show the check mark
+                document.getElementById('preloadPreapproach').querySelector('.pdf-checkmark').style.visibility = 'visible';
+            };
+
+                letterReader.readAsDataURL(letterFile);
+            }
+        });
+
+        closeLetterButton.addEventListener('click', function() {
+            pdfLetterViewer.innerHTML = ''; // Clear the PDF viewer content
+//          pdfLetterViewerCopy.innerHTML = ''; // Clear the copied PDF viewer content
+            pdfLetterFileInput.value = ''; // Reset the file input value
+            pdfLetterData = null; // Reset the stored PDF data
+            closeLetterButton.style.visibility = 'hidden';
+            closeMessageButton.style.visibility = 'hidden';
+			document.getElementById('preloadPreapproach').querySelector('.pdf-checkmark').style.visibility = 'hidden';
+        });
+		
+const pdfMessageFileInput = document.getElementById('pdfMessageFileInput');
+const closeMessageButton = document.getElementById('closeMessageButton');
+let pdfMessageData = null;
+
+    pdfMessageFileInput.addEventListener('change', function() {
+        const messageFile = pdfMessageFileInput.files[0];
+        if (messageFile) {
+            scanForQRCode(messageFile);
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            pdfMessageData = event.target.result;
+            const embedTag = `<embed id="pdfMessageEmbed" src="${pdfMessageData}#page=2&view=FitH" type="application/pdf">`;
+
+            pdfLetterViewerCopy.innerHTML = embedTag;
+			closeMessageButton.style.visibility = 'visible';
+        };
+
+        reader.readAsDataURL(messageFile);
+    }
+});
+
+closeMessageButton.addEventListener('click', function() {
+    pdfLetterViewerCopy.innerHTML = ''; // Clear the PDF viewer content
+    pdfMessageFileInput.value = ''; // Reset the file input value
+    pdfMessageData = null; // Reset the stored PDF data
+	closeMessageButton.style.visibility = 'hidden';
+});
+    </script>

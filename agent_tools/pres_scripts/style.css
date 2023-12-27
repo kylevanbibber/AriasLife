@@ -1,0 +1,236 @@
+button {
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.script-content {
+  padding-top: 100px;
+}
+.checkbox-container {
+  display: inline-block;
+}
+.step {
+  color: white;
+  font-weight: bold;
+}
+.closes {
+  background-color: #F9E7E7;
+  padding: 5px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.closestab {
+  background-color: #ED722F;
+  padding: 5px;
+  display: inline-block;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.objection {
+  font-weight: bold;
+  color: #ED722F;
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Columns: left, middle, right */
+  display: flex;
+  align-items: flex-start;
+}
+.item {
+  text-align: left;
+}
+.middle {
+  grid-column: 2; /* Place in the middle column */
+}
+.middle .item {
+  width: 100%; /* Make the middle item wider */
+}
+input {
+  margin: 1px;
+  padding: 2px 14px 2px 2px;
+  border: none;
+  border-radius: 2px;
+  font-family: "Calibri", sans-serif;
+  font-size: 11pt;
+  color: #474C55;
+}
+input[type="text"]:valid {
+  background-color: #D7D8F1;
+  font-weight: bold;
+}
+ol[type="a"] {
+  margin-top: 0;
+  padding-left: 20px;
+  list-style-type: lower-alpha;
+  list-style-position: outside; /* Adjust list style position */
+}
+.single {
+  display: none;
+}
+.SENIOR {
+  display: none;
+}
+.nochildren {
+  display: none;
+}
+.union {
+  display: none;
+}
+.dropdown-option {
+  font-family: "Calibri", sans-serif;
+  font-size: 14pt;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+}
+button.showhide {
+  font-family: "Calibri", sans-serif;
+  font-size: 14pt;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0px 5px 0px 5px;
+  background-color: #ED722F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+button.showhide:hover {
+  background-color: #F6BD9D;
+}
+button.showhide:active {
+  background-color: #FCEEE6;
+}
+body {
+  font-size: 14pt;
+  font-family: "Calibri", sans-serif;
+}
+.option-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: #00558C;
+  width: 100%;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+.cb-text {
+  font-size: 16px;
+  padding: 0px 8px 0px 3px;
+  color: #ED722F;
+  font-weight: bold;
+}
+.heading {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+}
+h1 {
+  margin-top: 6px;
+  margin-bottom: 0px;
+  font-family: "Calibri", sans-serif;
+  text-decoration: underline;
+}
+.smallfont {
+  font-size: 11pt;
+  color: #474C55;
+}
+.TECHNICALChar {
+  font-family: "Calibri", sans-serif;
+  color: #ED722F;
+}
+.TECHNICALChar::before, .TECHNICALChar::after {
+  content: "(";
+}
+.TECHNICALChar::after {
+  content: ")";
+}
+.VERBALChar {
+  font-family: "Calibri", sans-serif;
+  color: #319B42;
+  font-weight: bold;
+}
+.NON-VERBALChar {
+  font-family: "Calibri", sans-serif;
+  color: #ED722F;
+  font-weight: bold;
+}
+.ConditionalChar {
+  font-family: "Calibri", sans-serif;
+  color: #ED722F;
+}
+/* List Definitions */
+ol {
+  margin-bottom: 0px;
+}
+ul {
+  margin-bottom: 0px;
+  font-family: "Calibri", sans-serif;
+}
+li {
+  font-family: "Calibri", sans-serif;
+  padding: 5px;
+}
+@media (max-width: 725px) {
+body {
+  font-size: 12pt;
+	}
+  .centered {
+    display: grid;
+    justify-content: flex-start;
+  }
+  .item {
+    margin-left: 5px;
+  }
+  .checkbox-container {
+    display: inline-block;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .script-content {
+    padding-top: 220px;
+  }
+h1 {
+    font-size: 24pt;
+}
+.smallfont {
+  font-size: 9pt;
+	}
+}
+.dropdown-option {
+  font-size: 12pt;
+}
+@media (max-width: 400px) {
+body {
+  font-size: 10pt;
+	}
+  .centered {
+    display: grid;
+    justify-content: flex-start;
+  }
+  .item {
+    margin-left: 5px;
+  }
+  .checkbox-container {
+    display: inline-block;
+    justify-content: flex-start;
+    text-align: left;
+  }
+.dropdown-option {
+  font-size: 10pt;
+}
+h1 {
+    font-size: 20pt;
+}
+.smallfont {
+  font-size: 7pt;
+	}
+}

@@ -1,0 +1,108 @@
+<style>
+.retro-button {
+  display: inline-block;
+  background-color: #f0f0f0;
+  border: none;
+  color: #000;
+  padding: 5px 6px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5), -2px -2px 2px rgba(255, 255, 255, 0.8);
+}
+
+
+.checkmark {
+  position: absolute;
+  left: 10px;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 16px; /* Adjust the font size as needed */
+  color: #00FF00; /* Brighter green color */
+  font-weight: bold; /* Use "bold" instead of "bolder" for thicker weight */
+}
+
+
+.validate-text {
+  text-decoration-color: #008000; /* Green color */
+  margin-left: 20px;
+}
+</style>
+<div class="application"><h1 style="margin-top: 0px;">ASKING FOR BANK INFO:</h1>
+<ul>
+<li><strong>Depository Name </strong>(<strong>Bank</strong>)<strong>:</strong> What is the name of the bank that you'll be using for this?</li>
+	<button onclick="toggleElements('.whybank')" class="showhide">WHY DO YOU NEED MY BANK?</button>
+    <div class="whybank hidden closes">
+<div>That's a great question! Your benefit program is permanent and under your control. Because of that, they let you choose any bank that you want. They don't take it out of your paycheck. That means you can keep the benefits when you retire, change jobs or lose your job. So, what is the name of the bank that you'll be using for this?</div>
+<li><strong>City/State:</strong> Which city did you set that up in?</li>
+<li><strong>Routing Number/ Account #:</strong> Go ahead and grab a blank check with your routing and account # on it. If you don't have a check, the best place to find it will be your online banking. <span class="TECHNICALChar">checking only</span></li>
+<li><strong>Requested draw date:</strong> I'm going to set your draft date for the <span class="VERBALChar" id="dateDisplay"></span> of each month. The first premium will be handled within the next 1-5 business days. That will make sure you are protected as soon as we get off this call. Then after that, you won't see it come out again until <span class="VERBALChar" id="nextMonthName"></span>. Does that make sense? <span class="TECHNICALChar">If they want a different draft date, give them a 14 day window from today's date from which to choose.</span></li>
+	</ul>
+  <h1 style="margin-top: 20px;">PAGE 2</h1>
+  <ul>
+<li><strong>Personal Physician:</strong> Who's your doctor/health care provider? <span class="TECHNICALChar">Look up contact info</span></li>
+<li><strong>City:</strong> You guys are in <span class="VERBALChar">City</span>, correct? <span class="TECHNICALChar">Use the city where the client is currently located</span></li>
+<li><strong>Agent's statement:</strong> <span class="TECHNICALChar">Always IS NOT!</span></li>
+<li><strong>Mail Policy to:</strong> Policyholder</li>
+<li><strong>Best time to call:</strong> What's the best time for them to call you just to verify everything on this application? Morning time, afternoon, evening, or anytime?</li>
+<li><strong>Remarks:</strong></li>
+	<ul>
+  <li>Line 1: DocuSign</li>
+  <li>Line 2: Doctor or Doctor Facility Name</li>
+  <li>Line 3: Any other instructions<br clear="all" style="page-break-before: always;"></li>
+</ul>
+	</ul>
+
+<p><b>At the top of the app click:</b>
+<button class="retro-button" disabled>
+  <span class="checkmark">&#10003;</span>
+  <span class="validate-text"><u>V</u>alidate</span>
+</button> Correct errors if necessary then continue on to the rest of the forms.</p></div>
+<script>
+    // Get the current day of the month
+    var currentDate = new Date().getDate();
+
+    // Check if the day is greater than or equal to 29
+    if (currentDate >= 29) {
+        currentDate = 1; // Change day to 1
+        var today = new Date();
+        var nextMonth = new Date(today.getFullYear(), today.getMonth() + 2, 1); // Add 2 months to nextMonth
+    } else {
+        var today = new Date();
+        var nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+    }
+
+    // Function to get the suffix for the day
+    function getDaySuffix(day) {
+        if (day >= 11 && day <= 13) {
+            return 'th';
+        }
+
+        switch (day % 10) {
+            case 1:
+                return 'st';
+            case 2:
+                return 'nd';
+            case 3:
+                return 'rd';
+            default:
+                return 'th';
+        }
+    }
+
+    // Update the date display element with the current day and suffix
+    var dateDisplay = document.getElementById('dateDisplay');
+    dateDisplay.textContent = currentDate + getDaySuffix(currentDate);
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var monthNames = [
+            "January", "February", "March", "April", "May", "June", "July",
+            "August", "September", "October", "November", "December"
+        ];
+        var nextMonthName = monthNames[nextMonth.getMonth()];
+        document.getElementById("nextMonthName").textContent = nextMonthName + ", " + currentDate + getDaySuffix(currentDate);
+    });
+</script>
